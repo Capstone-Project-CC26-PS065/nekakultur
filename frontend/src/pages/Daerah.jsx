@@ -254,6 +254,7 @@ function Daerah() {
                     fontWeight: "bold",
                     fontSize: "16px",
                     marginBottom: "6px",
+                    color: "#8B2500",
                   }}
                 >
                   {provinsi.nama}
