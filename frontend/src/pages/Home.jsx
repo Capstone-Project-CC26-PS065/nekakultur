@@ -581,21 +581,26 @@ function Home() {
               })}
             </div>
 
-            <button
-              style={{
-                marginTop: "16px",
-                backgroundColor: "#2D6A4F",
-                color: "white",
-                fontWeight: "bold",
-                padding: "10px",
-                borderRadius: "8px",
-                width: "100%",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              Buka Kalender Lengkap
-            </button>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <Link
+                to="/kalender"
+                className="card-hover"
+                style={{
+                  marginTop: "16px",
+                  backgroundColor: "#2D6A4F",
+                  color: "white",
+                  textAlign: "center",
+                  fontWeight: "bold",
+                  padding: "10px",
+                  borderRadius: "8px",
+                  width: "100%",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                Buka Kalender Lengkap
+              </Link>
+            </div>
           </div>
         </div>
       </div>
