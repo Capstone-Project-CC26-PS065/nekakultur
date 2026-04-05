@@ -4,17 +4,32 @@ import balitr1 from "../assets/balitr1.jpg";
 import balitr2 from "../assets/balitr2.jpg";
 import balitr3 from "../assets/balitr3.jpg";
 import balitr4 from "../assets/balitr4.jpg";
+import kecak from "../assets/kecak.jpg";
+import pabali from "../assets/pa-bali.jpg";
+import ambali from "../assets/am-bali.jpg";
+import sabali from "../assets/sa-bali.jpg";
+import mkbali from "../assets/mk-bali.jpg";
+import lensa from "../assets/lensa.png";
 
 const dataProvinsi = {
   bali: {
     nama: "Bali",
     deskripsi:
-      "Pulau Dewata, pusat budaya Hindu & seni harmonis. Bali dikenal dengan tradisi seni yang kaya, upacara keagamaan yang megah, dan keindahan alam yang memukau.",
+      "Pusat budaya Hindu & seni harmonis. Bali dikenal dengan tradisi seni yang kaya, upacara keagamaan yang megah, dan keindahan alam yang memukau.",
+    video:
+      "https://www.youtube.com/embed/_Ey3osjBd3o?si=TEBcXO0L4qNR3c67&start=5",
     slideshow: [
       { foto: balitr1, caption: "Rumah Gapura Candi Bentar" },
       { foto: balitr2, caption: "Pura Taman Ayun" },
       { foto: balitr3, caption: "Istana Ubud" },
       { foto: balitr4, caption: "Gapura Bali" },
+    ],
+    galeri: [
+      { foto: kecak, caption: "Tarian Tradisional Bali" },
+      { foto: pabali, caption: "Pakaian Tradisional Bali" },
+      { foto: ambali, caption: "Alat Musik Tradisional Bali" },
+      { foto: sabali, caption: "Senjata Tradisional Bali" },
+      { foto: mkbali, caption: "Makanan Khas Tradisional Bali" },
     ],
   },
 };
@@ -175,7 +190,6 @@ function DetailDaerah() {
           </div>
         </div>
       </div>
-
       <div style={{ padding: "0 80px 32px" }}>
         <p
           style={{
@@ -189,6 +203,191 @@ function DetailDaerah() {
         >
           {provinsi.deskripsi}
         </p>
+      </div>
+
+      <div style={{ padding: "0 80px 32px" }}>
+        <h2
+          style={{
+            fontWeight: "bold",
+            color: "#8B2500",
+            fontSize: "20px",
+            marginBottom: "16px",
+          }}
+        >
+          Video Budaya {provinsi.nama}
+        </h2>
+        <div
+          style={{
+            borderRadius: "16px",
+            overflow: "hidden",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+          }}
+        >
+          <iframe
+            width="100%"
+            height="450"
+            src={provinsi.video}
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </div>
+      </div>
+
+      <div style={{ padding: "0 80px 48px" }}>
+        <h2
+          style={{
+            fontWeight: "bold",
+            color: "#8B2500",
+            fontSize: "20px",
+            marginBottom: "8px",
+          }}
+        >
+          Pelajari Lebih Lanjut tentang {provinsi.nama}
+        </h2>
+        <p style={{ color: "#888", fontSize: "14px", marginBottom: "16px" }}>
+          Eksplorasi budaya, tradisi, dan keunikan daerah ini
+        </p>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(3, 1fr)",
+            gap: "16px",
+          }}
+        >
+          {provinsi.galeri.slice(0, 3).map((item, i) => (
+            <div
+              key={i}
+              className="card-hover"
+              style={{
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                position: "relative",
+                cursor: "pointer",
+              }}
+            >
+              <img
+                src={item.foto}
+                alt={item.caption}
+                style={{
+                  width: "100%",
+                  height: "180px",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  backgroundColor: "rgba(0,0,0,0.3)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                }}
+              >
+                <img
+                  src={lensa}
+                  alt="lensa"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    objectFit: "contain",
+                  }}
+                />
+                <p
+                  style={{
+                    color: "white",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    margin: 0,
+                  }}
+                >
+                  {item.caption}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "16px",
+            marginTop: "16px",
+            width: "66.6%",
+            margin: "16px auto 0",
+          }}
+        >
+          {provinsi.galeri.slice(3).map((item, i) => (
+            <div
+              key={i}
+              className="card-hover"
+              style={{
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                position: "relative",
+                cursor: "pointer",
+              }}
+            >
+              <img
+                src={item.foto}
+                alt={item.caption}
+                style={{
+                  width: "100%",
+                  height: "180px",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  backgroundColor: "rgba(0,0,0,0.3)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
+                }}
+              >
+                <img
+                  src={lensa}
+                  alt="lensa"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    objectFit: "contain",
+                  }}
+                />
+                <p
+                  style={{
+                    color: "white",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    margin: 0,
+                  }}
+                >
+                  {item.caption}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

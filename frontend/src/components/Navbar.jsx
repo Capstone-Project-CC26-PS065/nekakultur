@@ -33,12 +33,14 @@ function Navbar() {
   ];
 
   const [pillStyle, setPillStyle] = useState({});
+  const isActive = (path) => {
+    if (path === "/daerah") return Location.pathname.startsWith("/daerah");
+    return Location.pathname === path;
+  };
   const navRefs = useRef([]);
 
   useEffect(() => {
-    const activeIndex = menu.findIndex(
-      (item) => item.path === Location.pathname,
-    );
+    const activeIndex = menu.findIndex((item) => isActive(item.path));
     const activeEl = navRefs.current[activeIndex];
     if (activeEl) {
       setPillStyle({
@@ -109,17 +111,15 @@ function Navbar() {
               borderRadius: "999px",
               textDecoration: "none",
               fontSize: "14px",
-              fontWeight: Location.pathname === item.path ? "bold" : "normal",
+              fontWeight: isActive(item.path) ? "bold" : "normal",
               position: "relative",
               zIndex: 1,
               backgroundColor: "transparent",
-              color: Location.pathname === item.path ? "#E8640C" : "#000000",
+              color: isActive(item.path) ? "#E8640C" : "#000000",
             }}
           >
             <img
-              src={
-                Location.pathname === item.path ? item.iconActive : item.icon
-              }
+              src={isActive(item.path) ? item.iconActive : item.icon}
               alt={item.label}
               style={{ width: "18px", height: "18px", objectFit: "contain" }}
             />
