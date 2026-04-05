@@ -4,10 +4,6 @@ import iconBeranda from "../assets/iconBeranda.png";
 import iconBeranda2 from "../assets/iconBeranda2.png";
 import iconDaerah from "../assets/iconDaerah.png";
 import iconDaerah2 from "../assets/iconDaerah2.png";
-import iconPeta from "../assets/iconPeta.png";
-import iconPeta2 from "../assets/iconPeta2.png";
-import iconKalender from "../assets/iconKalender.png";
-import iconKalender2 from "../assets/iconKalender2.png";
 import iconProfil from "../assets/iconProfil.png";
 import iconProfil2 from "../assets/iconProfil2.png";
 import logo from "../assets/logo.png";
@@ -27,13 +23,6 @@ function Navbar() {
       label: "Daerah",
       icon: iconDaerah,
       iconActive: iconDaerah2,
-    },
-    { path: "/peta", label: "Peta", icon: iconPeta, iconActive: iconPeta2 },
-    {
-      path: "/kalender",
-      label: "Kalender",
-      icon: iconKalender,
-      iconActive: iconKalender2,
     },
     {
       path: "/profil",
@@ -120,17 +109,16 @@ function Navbar() {
               borderRadius: "999px",
               textDecoration: "none",
               fontSize: "14px",
-              fontWeight: location.pathname === item.path ? "bold" : "normal",
+              fontWeight: Location.pathname === item.path ? "bold" : "normal",
               position: "relative",
               zIndex: 1,
-              backgroundColor:
-                location.pathname === item.path ? "#FFF0E0" : "transparent",
-              color: location.pathname === item.path ? "#E8640C" : "#000000",
+              backgroundColor: "transparent",
+              color: Location.pathname === item.path ? "#E8640C" : "#000000",
             }}
           >
             <img
               src={
-                location.pathname === item.path ? item.iconActive : item.icon
+                Location.pathname === item.path ? item.iconActive : item.icon
               }
               alt={item.label}
               style={{ width: "18px", height: "18px", objectFit: "contain" }}
