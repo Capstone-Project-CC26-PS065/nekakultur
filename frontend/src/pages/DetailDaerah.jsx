@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import balitr1 from "../assets/balitr1.jpg";
 import balitr2 from "../assets/balitr2.jpg";
 import balitr3 from "../assets/balitr3.jpg";
