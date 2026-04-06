@@ -20,29 +20,16 @@ const provinsiAktif = [
     deskripsi: "Pulau Dewata, pusat budaya Hindu & seni harmonis.",
   },
   {
-    id: "jakarta",
-    nama: "DKI Jakarta",
-    foto: jkt,
-    deskripsi: "Megapolitan, wadah lebur budaya Betawi & Nusantara",
-  },
-  {
-    id: "jatim",
-    nama: "Jawa Timur",
-    foto: jatim,
-    deskripsi: "Mataraman, perpaduan budaya Jawa & Madura yang berani.",
-  },
-  {
     id: "papua",
     nama: "Papua",
     foto: papua,
     deskripsi: "Bumi Cenderawasih, tradisi suku yang magis.",
   },
   {
-    id: "sumbar",
-    nama: "Sumatera Barat",
-    foto: sumbar,
-    deskripsi:
-      "Negeri Minangkabau dengan sistem matrilineal dan falsafah adat yang kokoh.",
+    id: "jakarta",
+    nama: "DKI Jakarta",
+    foto: jkt,
+    deskripsi: "Megapolitan, wadah lebur budaya Betawi & Nusantara",
   },
   {
     id: "jogja",
@@ -57,6 +44,26 @@ const provinsiAktif = [
     deskripsi: "Tanah Pasundan, pusat budaya Sunda yang anggun.",
   },
   {
+    id: "jatim",
+    nama: "Jawa Timur",
+    foto: jatim,
+    deskripsi: "Mataraman, perpaduan budaya Jawa & Madura yang berani.",
+  },
+  {
+    id: "sumbar",
+    nama: "Sumatera Barat",
+    foto: sumbar,
+    deskripsi:
+      "Negeri Minangkabau dengan sistem matrilineal dan falsafah adat yang kokoh.",
+  },
+  {
+    id: "sumut",
+    nama: "Sumatera Utara",
+    foto: sumut,
+    deskripsi:
+      "Tanah Batak yang dinamis, perpaduan budaya suku Batak, Melayu, dan Tionghoa.",
+  },
+  {
     id: "kaltim",
     nama: "Kalimantan Timur",
     foto: kaltim,
@@ -67,13 +74,6 @@ const provinsiAktif = [
     nama: "Sulawesi Selatan",
     foto: sulsel,
     deskripsi: "Bumi Arung Palakka, pusat budaya Bugis-Makassar.",
-  },
-  {
-    id: "sumut",
-    nama: "Sumatera Utara",
-    foto: sumut,
-    deskripsi:
-      "Tanah Batak yang dinamis, perpaduan budaya suku Batak, Melayu, dan Tionghoa.",
   },
 ];
 

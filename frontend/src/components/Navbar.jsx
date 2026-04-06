@@ -34,7 +34,12 @@ function Navbar() {
 
   const [pillStyle, setPillStyle] = useState({});
   const isActive = (path) => {
-    if (path === "/daerah") return Location.pathname.startsWith("/daerah");
+    if (path === "/daerah") {
+      return (
+        Location.pathname.startsWith("/daerah") ||
+        Location.pathname.startsWith("/kategori")
+      );
+    }
     return Location.pathname === path;
   };
   const navRefs = useRef([]);

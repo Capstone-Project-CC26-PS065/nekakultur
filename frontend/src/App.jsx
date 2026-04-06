@@ -7,6 +7,7 @@ import Daerah from "./pages/Daerah";
 import DetailDaerah from "./pages/DetailDaerah";
 import Kuis from "./pages/Kuis";
 import Peta from "./pages/Peta";
+import DetailKategori from "./pages/DetailKategori";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
@@ -45,6 +46,14 @@ function App() {
             element={
               <PageTransition>
                 <DetailDaerah />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/kategori/:id/:kategori"
+            element={
+              <PageTransition>
+                <DetailKategori />
               </PageTransition>
             }
           />
