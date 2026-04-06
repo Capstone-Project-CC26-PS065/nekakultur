@@ -8,6 +8,7 @@ import DetailDaerah from "./pages/DetailDaerah";
 import Kuis from "./pages/Kuis";
 import Peta from "./pages/Peta";
 import DetailKategori from "./pages/DetailKategori";
+import Profil from "./pages/Profil";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
@@ -54,6 +55,15 @@ function App() {
             element={
               <PageTransition>
                 <DetailKategori />
+              </PageTransition>
+            }
+          />
+
+          <Route
+            path="/profil"
+            element={
+              <PageTransition>
+                <Profil />
               </PageTransition>
             }
           />

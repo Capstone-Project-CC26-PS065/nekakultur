@@ -61,7 +61,7 @@ function Home() {
               Mulai Belajar
             </Link>
             <Link
-              to="/login"
+              to="/profil"
               className="card-hover"
               style={{
                 backgroundColor: "white",
