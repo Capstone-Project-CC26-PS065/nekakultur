@@ -108,12 +108,31 @@ const provinsiSegera = [
   "Papua Barat Daya",
 ];
 
-function Daerah() {
+function Daerah({ sudahDibaca = [], sedangDipelajari = [], nilaiKuis = {} }) {
   const [search, setSearch] = useState("");
+  const [filterPulau, setFilterPulau] = useState("Semua");
 
-  const filtered = provinsiAktif.filter((p) =>
-    p.nama.toLowerCase().includes(search.toLowerCase()),
-  );
+  const pulauMap = {
+    "Pulau Jawa": ["jakarta", "jogja", "jabar", "jatim"],
+    "Pulau Sumatera": ["sumbar", "sumut"],
+    "Pulau Kalimantan": ["kaltim"],
+    "Pulau Sulawesi": ["sulsel"],
+    Papua: ["papua"],
+  };
+
+  const nilaiArr = Object.values(nilaiKuis);
+  const rataRata =
+    nilaiArr.length > 0
+      ? Math.round(nilaiArr.reduce((a, b) => a + b, 0) / nilaiArr.length)
+      : 0;
+
+  const filtered = provinsiAktif.filter((p) => {
+    const matchSearch = p.nama.toLowerCase().includes(search.toLowerCase());
+    const matchPulau =
+      filterPulau === "Semua" ||
+      (pulauMap[filterPulau] && pulauMap[filterPulau].includes(p.id));
+    return matchSearch && matchPulau;
+  });
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#FFF8F0" }}>
@@ -165,6 +184,8 @@ function Daerah() {
             />
           </div>
           <select
+            value={filterPulau}
+            onChange={(e) => setFilterPulau(e.target.value)}
             style={{
               padding: "10px 16px",
               borderRadius: "12px",
@@ -192,9 +213,9 @@ function Daerah() {
           }}
         >
           {[
-            { label: "Daerah Selesai", value: "0" },
-            { label: "Sedang Dipelajari", value: "0" },
-            { label: "Rata-rata Kuis", value: "0%" },
+            { label: "Daerah Selesai", value: sudahDibaca.length },
+            { label: "Sedang Dipelajari", value: sedangDipelajari.length },
+            { label: "Rata-rata Kuis", value: `${rataRata}%` },
           ].map((stat, i) => (
             <div
               key={i}
@@ -228,7 +249,7 @@ function Daerah() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
             gap: "24px",
           }}
         >
@@ -241,8 +262,27 @@ function Daerah() {
                 borderRadius: "16px",
                 overflow: "hidden",
                 boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+                position: "relative",
               }}
             >
+              {sudahDibaca.includes(provinsi.id) && (
+                <div
+                  style={{
+                    position: "absolute",
+                    top: "12px",
+                    right: "12px",
+                    backgroundColor: "#4CAF50",
+                    color: "white",
+                    fontSize: "11px",
+                    fontWeight: "bold",
+                    padding: "4px 10px",
+                    borderRadius: "999px",
+                    zIndex: 1,
+                  }}
+                >
+                  ✓ Sudah Dibaca
+                </div>
+              )}
               <img
                 src={provinsi.foto}
                 alt={provinsi.nama}

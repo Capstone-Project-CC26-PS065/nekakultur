@@ -10,6 +10,7 @@ import ambali from "../assets/am-bali.jpg";
 import sabali from "../assets/sa-bali.jpg";
 import mkbali from "../assets/mk-bali.jpg";
 import lensa from "../assets/lensa.png";
+import quiz from "../assets/quiz.png";
 
 const dataProvinsi = {
   bali: {
@@ -50,10 +51,15 @@ const dataProvinsi = {
   },
 };
 
-function DetailDaerah() {
+function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
   const { id } = useParams();
+  const dibaca = sudahDibaca.includes(id);
   const provinsi = dataProvinsi[id];
   const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    if (onMulaiDipelajari) onMulaiDipelajari(id);
+  }, [id]);
 
   useEffect(() => {
     if (!provinsi) return;
@@ -76,7 +82,7 @@ function DetailDaerah() {
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#FFF8F0" }}>
-      <div style={{ padding: "32px 80px" }}>
+      <div style={{ padding: "clamp(16px, 4vw, 32px) clamp(16px, 6vw, 80px)" }}>
         <div
           style={{
             position: "relative",
@@ -206,7 +212,7 @@ function DetailDaerah() {
           </div>
         </div>
       </div>
-      <div style={{ padding: "0 80px 32px" }}>
+      <div style={{ padding: "0 clamp(16px, 6vw, 80px) 32px" }}>
         <p
           style={{
             fontSize: "16px",
@@ -221,7 +227,7 @@ function DetailDaerah() {
         </p>
       </div>
 
-      <div style={{ padding: "0 80px 32px" }}>
+      <div style={{ padding: "0 clamp(16px, 6vw, 80px) 32px" }}>
         <h2
           style={{
             fontWeight: "bold",
@@ -252,7 +258,7 @@ function DetailDaerah() {
         </div>
       </div>
 
-      <div style={{ padding: "0 80px 48px" }}>
+      <div style={{ padding: "0 clamp(16px, 6vw, 80px) 48px" }}>
         <h2
           style={{
             fontWeight: "bold",
@@ -415,6 +421,61 @@ function DetailDaerah() {
             </Link>
           ))}
         </div>
+      </div>
+
+      <div
+        style={{
+          padding: "0 clamp(16px, 6vw, 80px) 32px",
+          display: "flex",
+          gap: "16px",
+        }}
+      >
+        <button
+          onClick={() => onTandai(id)}
+          disabled={dibaca}
+          style={{
+            flex: 1,
+            backgroundColor: dibaca ? "#8B2500" : "white",
+            color: dibaca ? "white" : "#8B2500",
+            fontWeight: "bold",
+            padding: "14px",
+            borderRadius: "10px",
+            border: "2px solid #8B2500",
+            fontSize: "15px",
+            cursor: dibaca ? "default" : "pointer",
+            transition: "all 0.3s ease",
+          }}
+        >
+          {dibaca ? "✓ Sudah Dibaca" : "✓ Tandai Sudah Dibaca"}
+        </button>
+        <Link
+          to={`/kuis/${id}`}
+          className="card-hover"
+          style={{
+            flex: 1,
+            backgroundColor: "#E8640C",
+            color: "white",
+            fontWeight: "bold",
+            padding: "14px",
+            borderRadius: "10px",
+            border: "none",
+            fontSize: "15px",
+            cursor: "pointer",
+            textDecoration: "none",
+            textAlign: "center",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px",
+          }}
+        >
+          <img
+            src={quiz}
+            alt="quiz"
+            style={{ width: "18px", height: "18px", objectFit: "contain" }}
+          />
+          Kerjakan Kuis
+        </Link>
       </div>
     </div>
   );

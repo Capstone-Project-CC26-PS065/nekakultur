@@ -13,17 +13,19 @@ function Home() {
           backgroundSize: "cover",
           backgroundBlendMode: "overlay",
           color: "white",
-          padding: "64px 48px",
+          padding: "clamp(32px, 5vw, 64px) clamp(20px, 5vw, 48px)",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          flexWrap: "wrap",
+          gap: "24px",
           position: "relative",
         }}
       >
-        <div style={{ maxWidth: "500px", marginLeft: "80px" }}>
+        <div style={{ maxWidth: "500px", marginLeft: "clamp(0px, 5vw, 80px)" }}>
           <h1
             style={{
-              fontSize: "52px",
+              fontSize: "clamp(28px, 4vw, 52px)",
               fontWeight: "bold",
               marginBottom: "16px",
             }}
@@ -80,55 +82,12 @@ function Home() {
         <img
           src={wayang}
           alt="Wayang"
-          style={{ width: "220px", objectFit: "contain", marginRight: "150px" }}
-        />
-      </div>
-
-      <div style={{ padding: "48px 80px" }}>
-        <h2 style={{ fontWeight: "bold", color: "#8B2500", fontSize: "19px" }}>
-          Jelajahi Daerah
-        </h2>
-        <p style={{ color: "#888", fontSize: "14px", marginBottom: "16px" }}>
-          Pelajari kebudayaan dari berbagai daerah di Indonesia
-        </p>
-        <div
-          className="card-hover"
           style={{
-            backgroundColor: "#E8640C",
-            borderRadius: "16px",
-            padding: "20px",
-            color: "white",
-            maxWidth: "400px",
+            width: "clamp(120px, 15vw, 220px)",
+            objectFit: "contain",
+            marginRight: "clamp(0px, 10vw, 150px)",
           }}
-        >
-          <img
-            src={iconDaerah}
-            style={{
-              width: "20px",
-              height: "20px",
-              objectFit: "contain",
-              marginBottom: "8px",
-              filter: "brightness(0) invert(1)",
-            }}
-          />
-          <h3 style={{ fontWeight: "bold", fontSize: "15px" }}>Lihat Daftar</h3>
-          <p style={{ fontSize: "12px", marginTop: "5px", opacity: 0.9 }}>
-            Jelajahi semua provinsi dalam tampilan daftar lengkap dengan detail
-            kebudayaan
-          </p>
-          <Link
-            to="/daerah"
-            className="card-hover"
-            style={{
-              fontSize: "12px",
-              color: "white",
-              marginTop: "8px",
-              display: "block",
-            }}
-          >
-            Lihat Semua Provinsi →
-          </Link>
-        </div>
+        />
       </div>
     </div>
   );
