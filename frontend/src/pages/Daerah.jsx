@@ -108,7 +108,7 @@ const provinsiSegera = [
   "Papua Barat Daya",
 ];
 
-function Daerah({ sudahDibaca = [], sedangDipelajari = [], nilaiKuis = {} }) {
+function Daerah({ sudahDibaca = [] }) {
   const [search, setSearch] = useState("");
   const [filterPulau, setFilterPulau] = useState("Semua");
 
@@ -119,12 +119,6 @@ function Daerah({ sudahDibaca = [], sedangDipelajari = [], nilaiKuis = {} }) {
     "Pulau Sulawesi": ["sulsel"],
     Papua: ["papua"],
   };
-
-  const nilaiArr = Object.values(nilaiKuis);
-  const rataRata =
-    nilaiArr.length > 0
-      ? Math.round(nilaiArr.reduce((a, b) => a + b, 0) / nilaiArr.length)
-      : 0;
 
   const filtered = provinsiAktif.filter((p) => {
     const matchSearch = p.nama.toLowerCase().includes(search.toLowerCase());
@@ -202,48 +196,6 @@ function Daerah({ sudahDibaca = [], sedangDipelajari = [], nilaiKuis = {} }) {
             <option>Pulau Sulawesi</option>
             <option>Papua</option>
           </select>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "16px",
-            marginBottom: "32px",
-          }}
-        >
-          {[
-            { label: "Daerah Selesai", value: sudahDibaca.length },
-            { label: "Sedang Dipelajari", value: sedangDipelajari.length },
-            { label: "Rata-rata Kuis", value: `${rataRata}%` },
-          ].map((stat, i) => (
-            <div
-              key={i}
-              className="card-hover"
-              style={{
-                backgroundColor: "white",
-                borderRadius: "12px",
-                padding: "20px",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.06)",
-                textAlign: "center",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "28px",
-                  fontWeight: "bold",
-                  color: "#E8640C",
-                }}
-              >
-                {stat.value}
-              </div>
-              <div
-                style={{ fontSize: "14px", color: "#888", marginTop: "4px" }}
-              >
-                {stat.label}
-              </div>
-            </div>
-          ))}
         </div>
 
         <div
