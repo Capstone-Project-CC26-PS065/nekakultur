@@ -285,63 +285,68 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
           }}
         >
           {provinsi.galeri.slice(0, 3).map((item, i) => (
-            <div
+            <Link
               key={i}
-              className="card-hover"
-              style={{
-                borderRadius: "12px",
-                overflow: "hidden",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-                position: "relative",
-                cursor: "pointer",
-              }}
+              to={`/kategori/${id}/${item.kategori}`}
+              style={{ textDecoration: "none" }}
             >
-              <img
-                src={item.foto}
-                alt={item.caption}
-                style={{
-                  width: "100%",
-                  height: "180px",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
               <div
+                className="card-hover"
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  backgroundColor: "rgba(0,0,0,0.3)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                  position: "relative",
+                  cursor: "pointer",
                 }}
               >
                 <img
-                  src={lensa}
-                  alt="lensa"
+                  src={item.foto}
+                  alt={item.caption}
                   style={{
-                    width: "40px",
-                    height: "40px",
-                    objectFit: "contain",
+                    width: "100%",
+                    height: "180px",
+                    objectFit: "cover",
+                    display: "block",
                   }}
                 />
-                <p
+                <div
                   style={{
-                    color: "white",
-                    fontSize: "13px",
-                    fontWeight: "500",
-                    margin: 0,
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
                   }}
                 >
-                  {item.caption}
-                </p>
+                  <img
+                    src={lensa}
+                    alt="lensa"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <p
+                    style={{
+                      color: "white",
+                      fontSize: "13px",
+                      fontWeight: "500",
+                      margin: 0,
+                    }}
+                  >
+                    {item.caption}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -357,63 +362,68 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
           }}
         >
           {provinsi.galeri.slice(3).map((item, i) => (
-            <div
+            <Link
               key={i}
-              className="card-hover"
-              style={{
-                borderRadius: "12px",
-                overflow: "hidden",
-                boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-                position: "relative",
-                cursor: "pointer",
-              }}
+              to={`/kategori/${id}/${item.kategori}`}
+              style={{ textDecoration: "none" }}
             >
-              <img
-                src={item.foto}
-                alt={item.caption}
-                style={{
-                  width: "100%",
-                  height: "180px",
-                  objectFit: "cover",
-                  display: "block",
-                }}
-              />
               <div
+                className="card-hover"
                 style={{
-                  position: "absolute",
-                  top: 0,
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  backgroundColor: "rgba(0,0,0,0.3)",
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "8px",
+                  borderRadius: "12px",
+                  overflow: "hidden",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                  position: "relative",
+                  cursor: "pointer",
                 }}
               >
                 <img
-                  src={lensa}
-                  alt="lensa"
+                  src={item.foto}
+                  alt={item.caption}
                   style={{
-                    width: "40px",
-                    height: "40px",
-                    objectFit: "contain",
+                    width: "100%",
+                    height: "180px",
+                    objectFit: "cover",
+                    display: "block",
                   }}
                 />
-                <p
+                <div
                   style={{
-                    color: "white",
-                    fontSize: "13px",
-                    fontWeight: "500",
-                    margin: 0,
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "8px",
                   }}
                 >
-                  {item.caption}
-                </p>
+                  <img
+                    src={lensa}
+                    alt="lensa"
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <p
+                    style={{
+                      color: "white",
+                      fontSize: "13px",
+                      fontWeight: "500",
+                      margin: 0,
+                    }}
+                  >
+                    {item.caption}
+                  </p>
+                </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
