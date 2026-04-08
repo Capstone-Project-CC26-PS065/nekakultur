@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import wayang from "../assets/wayang.png";
 import motif from "../assets/motif.png";
+import logo2 from "../assets/logo2.jpeg";
 
 function Login() {
   return (
@@ -36,8 +37,16 @@ function Login() {
             fontSize: "clamp(18px, 3vw, 24px)",
             fontWeight: "bold",
             textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
           }}
         >
+          <img
+            src={logo2}
+            alt="logo"
+            style={{ width: "30px", height: "30px", objectFit: "contain" }}
+          />
           NekaKultur
         </Link>
 
@@ -93,6 +102,7 @@ function Login() {
               untuk melestarikan dan mempromosikan kekayaan budaya Indonesia.
             </p>
 
+            {/* Tombol di mobile muncul setelah deskripsi */}
             <div
               className="buttons"
               style={{
@@ -116,7 +126,6 @@ function Login() {
               >
                 Masuk
               </Link>
-
               <Link
                 to="/login/daftar"
                 style={{
@@ -132,15 +141,28 @@ function Login() {
                 Daftar
               </Link>
             </div>
+
+            {/* Wayang di mobile muncul di bawah tombol */}
+            <img
+              src={wayang}
+              alt="Wayang"
+              className="wayang-mobile"
+              style={{
+                width: "clamp(160px, 50vw, 220px)",
+                display: "block",
+              }}
+            />
           </div>
 
-          {/* IMAGE */}
+          {/* Wayang di desktop di sebelah kanan */}
           <img
             src={wayang}
             alt="Wayang"
             className="wayang"
             style={{
-              width: "clamp(180px, 45vw, 260px)",
+              width: "320px",
+              marginRight: "100px",
+              marginBottom: "40px",
             }}
           />
         </div>
@@ -149,30 +171,39 @@ function Login() {
       {/* DESKTOP */}
       <style>
         {`
-          @media (min-width: 768px) {
-            .content {
-              flex-direction: row !important;
-              justify-content: space-between;
-              align-items: center;
-            }
+    .wayang-mobile { display: block; }
+    .wayang { display: none; }
+   
+         
 
-            .text {
-              align-items: flex-start !important;
-              text-align: left !important;
-              max-width: 520px;
-            }
+    @media (min-width: 768px) {
+     
 
-            .buttons {
-              justify-content: flex-start !important;
-            }
+      .content {
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center;
+      }
+    
 
-            .wayang {
-              width: 320px;
-              margin-right: 100px;
-              margin-bottom: 40px;
-            }
-          }
-        `}
+      .text {
+        align-items: flex-start !important;
+        text-align: left !important;
+        max-width: 520px;
+      }
+
+      .wayang-mobile { display: none !important; }
+      .wayang { display: block !important; }
+
+      .buttons {
+        justify-content: flex-start !important;
+      }
+
+     
+
+      
+    }
+  `}
       </style>
     </div>
   );

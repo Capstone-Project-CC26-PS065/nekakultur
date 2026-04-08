@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import wayang from "../assets/wayang.png";
 import motif from "../assets/motif.png";
-import iconDaerah from "../assets/iconDaerah.png";
 
 function Home() {
   return (
     <div style={{ minHeight: "100%", backgroundColor: "#FFF8F0" }}>
       <div
+        className="hero"
         style={{
           backgroundColor: "#8B2500",
           backgroundImage: `url(${motif})`,
@@ -15,14 +15,14 @@ function Home() {
           color: "white",
           padding: "clamp(32px, 5vw, 64px) clamp(20px, 5vw, 48px)",
           display: "flex",
-          justifyContent: "space-between",
+          flexDirection: "column",
           alignItems: "center",
-          flexWrap: "wrap",
-          gap: "24px",
-          position: "relative",
+          textAlign: "center",
+          gap: "20px",
         }}
       >
-        <div style={{ maxWidth: "500px", marginLeft: "clamp(0px, 5vw, 80px)" }}>
+        {/* TEXT */}
+        <div style={{ maxWidth: "500px" }}>
           <h1
             style={{
               fontSize: "clamp(28px, 4vw, 52px)",
@@ -41,54 +41,89 @@ function Home() {
               NekaKultur
             </span>
           </h1>
-          <p
-            style={{ fontSize: "16px", marginBottom: "32px", color: "#f0d0c0" }}
-          >
-            NekaKultur adalah platform edukasi interaktif yang didedikasikan
-            untuk melestarikan dan mempromosikan kekayaan budaya Indonesia.
-          </p>
-          <div style={{ display: "flex", gap: "16px" }}>
-            <Link
-              to="/daerah"
-              className="card-hover"
-              style={{
-                backgroundColor: "#E8640C",
-                color: "white",
-                fontWeight: "bold",
-                padding: "11px 24px",
-                borderRadius: "8px",
-                textDecoration: "none",
-              }}
-            >
-              Mulai Belajar
-            </Link>
-            <Link
-              to="/profil"
-              className="card-hover"
-              style={{
-                backgroundColor: "white",
-                color: "#8B2500",
-                fontWeight: "bold",
-                padding: "11px 24px",
-                borderRadius: "8px",
-                textDecoration: "none",
-                border: "2px solid white",
-              }}
-            >
-              Lihat Profil
-            </Link>
-          </div>
         </div>
+
+        {/* WAYANG (POSISI BARU - TENGAH) */}
         <img
           src={wayang}
           alt="Wayang"
+          className="wayang"
           style={{
-            width: "clamp(120px, 15vw, 220px)",
-            objectFit: "contain",
-            marginRight: "clamp(0px, 10vw, 150px)",
+            width: "clamp(140px, 40vw, 220px)",
+            margin: "10px auto",
           }}
         />
+
+        {/* DESKRIPSI */}
+        <p
+          style={{
+            fontSize: "16px",
+            color: "#f0d0c0",
+            maxWidth: "500px",
+          }}
+        >
+          NekaKultur adalah platform edukasi interaktif yang didedikasikan untuk
+          melestarikan dan mempromosikan kekayaan budaya Indonesia.
+        </p>
+
+        {/* BUTTON */}
+        <div
+          style={{
+            display: "flex",
+            gap: "16px",
+            justifyContent: "center",
+            flexWrap: "wrap",
+          }}
+        >
+          <Link
+            to="/daerah"
+            className="card-hover"
+            style={{
+              backgroundColor: "#E8640C",
+              color: "white",
+              fontWeight: "bold",
+              padding: "11px 24px",
+              borderRadius: "8px",
+              textDecoration: "none",
+            }}
+          >
+            Mulai Belajar
+          </Link>
+
+          <Link
+            to="/profil"
+            className="card-hover"
+            style={{
+              backgroundColor: "white",
+              color: "#8B2500",
+              fontWeight: "bold",
+              padding: "11px 24px",
+              borderRadius: "8px",
+              textDecoration: "none",
+              border: "2px solid white",
+            }}
+          >
+            Lihat Profil
+          </Link>
+        </div>
       </div>
+
+      {/* DESKTOP VERSION */}
+      <style>
+        {`
+          @media (min-width: 768px) {
+            .hero {
+              flex-direction: row;
+              justify-content: space-between;
+              text-align: left;
+            }
+
+            .hero img {
+              margin: 0;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }

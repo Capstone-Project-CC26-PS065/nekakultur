@@ -217,7 +217,7 @@ function Login2({ onLogin }) {
                     color: "#aaa",
                   }}
                 >
-                  {showPassword ? "🙈" : "👁"}
+                  {showPassword ? "⌣" : "👁"}
                 </span>
               </div>
               {isLogin && (
@@ -340,6 +340,7 @@ function Login2({ onLogin }) {
 
         {/* Wayang - disembunyikan di mobile */}
         <div
+          className="wayang-side"
           style={{
             width: "clamp(0px, 30vw, 280px)",
             backgroundColor: "#6B3A2A",
@@ -362,3 +363,13 @@ function Login2({ onLogin }) {
 }
 
 export default Login2;
+
+<style>
+  {`
+  @media (max-width: 768px) {
+    .wayang-side {
+      display: none !important;
+    }
+  }
+`}
+</style>;

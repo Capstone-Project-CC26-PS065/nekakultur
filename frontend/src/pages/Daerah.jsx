@@ -133,23 +133,31 @@ function Daerah({ sudahDibaca = [] }) {
       <div
         style={{
           backgroundColor: "#8B2500",
-          padding: "40px 80px",
+          padding: "clamp(24px, 5vw, 40px) clamp(16px, 6vw, 80px)",
           color: "white",
         }}
       >
         <h1
-          style={{ fontSize: "36px", fontWeight: "bold", marginBottom: "8px" }}
+          style={{
+            fontSize: "36px",
+            fontWeight: "bold",
+            marginBottom: "8px",
+            textAlign: "center",
+          }}
         >
           Jelajahi Daerah
         </h1>
-        <p style={{ fontSize: "16px", color: "#f0d0c0" }}>
+        <p style={{ fontSize: "16px", color: "#f0d0c0", textAlign: "center" }}>
           Pelajari kebudayaan dari 38 daerah di Indonesia dan uji pengetahuan
           Anda
         </p>
       </div>
 
-      <div style={{ padding: "32px 80px" }}>
-        <div style={{ display: "flex", gap: "12px", marginBottom: "24px" }}>
+      <div style={{ padding: "clamp(20px, 5vw, 32px) clamp(16px, 6vw, 80px)" }}>
+        <div
+          className="filter-bar"
+          style={{ display: "flex", gap: "12px", marginBottom: "24px" }}
+        >
           <div
             style={{
               flex: 1,
@@ -165,14 +173,14 @@ function Daerah({ sudahDibaca = [] }) {
             <img src={iconDaerah2} style={{ color: "#999" }} />
             <input
               type="text"
-              placeholder="Cari daerah atau provinsi"
+              placeholder="Cari daerah"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               style={{
                 border: "none",
                 outline: "none",
                 width: "100%",
-                fontSize: "14px",
+                fontSize: "13px",
                 backgroundColor: "transparent",
               }}
             />
@@ -181,7 +189,7 @@ function Daerah({ sudahDibaca = [] }) {
             value={filterPulau}
             onChange={(e) => setFilterPulau(e.target.value)}
             style={{
-              padding: "10px 16px",
+              padding: "10px 17px",
               borderRadius: "12px",
               border: "1px solid #ddd",
               fontSize: "14px",
@@ -199,9 +207,10 @@ function Daerah({ sudahDibaca = [] }) {
         </div>
 
         <div
+          className="grid-daerah"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
             gap: "24px",
           }}
         >
@@ -358,3 +367,23 @@ function Daerah({ sudahDibaca = [] }) {
 }
 
 export default Daerah;
+
+<style>
+  {`
+  .grid-daerah {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 1024px) {
+    .grid-daerah {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .grid-daerah {
+      grid-template-columns: 1fr;
+    }
+  }
+`}
+</style>;

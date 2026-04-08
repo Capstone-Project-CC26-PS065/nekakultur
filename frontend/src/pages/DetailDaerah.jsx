@@ -87,7 +87,7 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
           style={{
             position: "relative",
             width: "100%",
-            height: "450px",
+            height: "clamp(220px, 40vw, 450px)",
             borderRadius: "20px",
             overflow: "hidden",
             boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
@@ -152,10 +152,10 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
             style={{
               position: "absolute",
               top: "20px",
-              left: "24px",
+              left: "18px",
               color: "white",
               textDecoration: "none",
-              fontSize: "14px",
+              fontSize: "12px",
               fontWeight: "bold",
               zIndex: 2,
               backgroundColor: "rgba(0,0,0,0.3)",
@@ -173,11 +173,13 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
               left: "50%",
               transform: "translateX(-50%)",
               color: "white",
-              fontSize: "36px",
+              fontSize: "clamp(20px, 4vw, 36px)",
               fontWeight: "bold",
               zIndex: 2,
               textShadow: "0 2px 8px rgba(0,0,0,0.5)",
-              whiteSpace: "nowrap",
+              whiteSpace: "normal",
+              textAlign: "center",
+              padding: "0 12px",
             }}
           >
             {provinsi.nama}
@@ -233,7 +235,7 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
             fontWeight: "bold",
             color: "#8B2500",
             fontSize: "20px",
-            marginBottom: "16px",
+            marginBottom: "15px",
           }}
         >
           Video Budaya {provinsi.nama}
@@ -243,16 +245,18 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
             borderRadius: "16px",
             overflow: "hidden",
             boxShadow: "0 4px 16px rgba(0,0,0,0.12)",
+            width: "100%",
+            height: "clamp(220px, 40vw, 450px)",
           }}
         >
           <iframe
-            width="100%"
-            height="450"
             src={provinsi.video}
             title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+            }}
             allowFullScreen
           />
         </div>
@@ -275,7 +279,7 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gap: "16px",
           }}
         >
@@ -349,11 +353,9 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
+            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
             gap: "16px",
             marginTop: "16px",
-            width: "66.6%",
-            margin: "16px auto 0",
           }}
         >
           {provinsi.galeri.slice(3).map((item, i) => (
@@ -472,7 +474,7 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
           <img
             src={quiz}
             alt="quiz"
-            style={{ width: "18px", height: "18px", objectFit: "contain" }}
+            style={{ width: "25px", height: "25px", objectFit: "contain" }}
           />
           Kerjakan Kuis
         </Link>

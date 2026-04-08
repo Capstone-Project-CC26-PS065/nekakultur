@@ -277,23 +277,30 @@ function DetailKategori() {
           style={{
             color: "white",
             textDecoration: "none",
+            textAlign: "left",
             fontSize: "14px",
             opacity: 0.8,
           }}
         >
           ← Kembali
         </Link>
-        <h1 style={{ fontSize: "32px", fontWeight: "bold", marginTop: "8px" }}>
+        <h1
+          style={{
+            fontSize: "17px",
+            fontWeight: "bold",
+            marginTop: "8px",
+          }}
+        >
           {data.judul} <span style={{ opacity: 0.7 }}>— {data.provinsi}</span>
         </h1>
       </div>
 
-      <div style={{ padding: "40px 80px" }}>
+      <div style={{ padding: "clamp(16px,5vw,40px) clamp(16px,6vw,80px)" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "40px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "clamp(20px,4vw,40px)",
             alignItems: "start",
           }}
         >
@@ -311,7 +318,7 @@ function DetailKategori() {
                 alt={slide.nama}
                 style={{
                   width: "100%",
-                  height: "340px",
+                  height: "clamp(220px,40vw,340px)",
                   objectFit: "cover",
                   display: "block",
                 }}
