@@ -37,7 +37,8 @@ function Navbar() {
     if (path === "/daerah") {
       return (
         Location.pathname.startsWith("/daerah") ||
-        Location.pathname.startsWith("/kategori")
+        Location.pathname.startsWith("/kategori") ||
+        Location.pathname.startsWith("/kuis")
       );
     }
     return Location.pathname === path;

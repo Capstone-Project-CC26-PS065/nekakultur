@@ -135,7 +135,7 @@ function Kuis({ onSelesaiKuis }) {
 
         <div
           style={{
-            padding: "48px 80px",
+            padding: "clamp(16px, 4vw, 48px) clamp(16px, 6vw, 80px)",
             display: "flex",
             justifyContent: "center",
           }}
@@ -179,7 +179,16 @@ function Kuis({ onSelesaiKuis }) {
             >
               {nilai}
             </div>
-            <div style={{ display: "flex", gap: "12px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: window.innerWidth <= 768 ? "column" : "row",
+                gap: "12px",
+                justifyContent: "center",
+                alignItems: "center",
+                width: "100%",
+              }}
+            >
               <button
                 onClick={() => {
                   setSoalAktif(0);
@@ -190,7 +199,7 @@ function Kuis({ onSelesaiKuis }) {
                   setJawabanUser([]);
                 }}
                 style={{
-                  flex: 1,
+                  width: "100%",
                   padding: "12px",
                   borderRadius: "8px",
                   border: "2px solid #8B2500",
@@ -206,7 +215,7 @@ function Kuis({ onSelesaiKuis }) {
               <Link
                 to={`/daerah/${id}`}
                 style={{
-                  flex: 1,
+                  width: "100%",
                   padding: "12px",
                   borderRadius: "8px",
                   backgroundColor: "#E8640C",
@@ -280,7 +289,7 @@ function Kuis({ onSelesaiKuis }) {
 
       <div
         style={{
-          padding: "40px 48px",
+          padding: "clamp(16px, 4vw, 48px) clamp(16px, 6vw, 80px)",
           display: "flex",
           justifyContent: "center",
         }}

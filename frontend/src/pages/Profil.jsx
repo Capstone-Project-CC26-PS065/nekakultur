@@ -13,7 +13,13 @@ function Profil() {
 
   return (
     <div style={{ backgroundColor: "#F5EBDD", minHeight: "100vh" }}>
-      <div style={{ padding: "24px 80px" }}>
+      <div
+        style={{
+          padding: "clamp(16px, 4vw, 24px)",
+          maxWidth: "1000px",
+          margin: "0 auto",
+        }}
+      >
         <div
           style={{
             backgroundColor: "#ffffff",
@@ -22,15 +28,26 @@ function Profil() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            gap: "16px",
           }}
         >
-          <div style={{ display: "flex", gap: "16px" }}>
+          <div
+            style={{
+              display: "flex",
+              gap: "16px",
+              alignItems: "center",
+              flex: 1,
+              minWidth: 0,
+            }}
+          >
             <img
               src={profil1}
               alt="profil"
               style={{
                 width: "70px",
                 height: "70px",
+                minWidth: "70px",
+                flexShrink: 0,
                 borderRadius: "50%",
                 objectFit: "cover",
               }}
@@ -42,15 +59,17 @@ function Profil() {
                   margin: 0,
                   color: "#333",
                   fontWeight: 700,
-                  fontSize: "18px",
+                  fontSize: "15px",
+                  maxWidth: "100%",
+                  wordBreak: "break-word",
                 }}
               >
                 {profil.nama}
               </h3>
-              <p style={{ margin: "4px 0", color: "#888", fontSize: "14px" }}>
+              <p style={{ margin: "4px 0", color: "#888", fontSize: "12px" }}>
                 @{profil.username}
               </p>
-              <p style={{ margin: 0, fontSize: "13px", color: "#555" }}>
+              <p style={{ margin: 0, fontSize: "12px", color: "#555" }}>
                 {profil.bio}
               </p>
             </div>
@@ -61,7 +80,7 @@ function Profil() {
               style={{
                 backgroundColor: "#FCE4D6",
                 border: "none",
-                padding: "6px 12px",
+                padding: "6px 6px",
                 borderRadius: "8px",
                 cursor: "pointer",
                 color: "#E8640C",
@@ -70,6 +89,9 @@ function Profil() {
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",
+                alignSelf: window.innerWidth <= 768 ? "flex-end" : "auto",
+                whiteSpace: "nowrap",
+                flexShrink: 0,
               }}
             >
               <img src={pensil} alt="edit" style={{ width: "14px" }} />
@@ -105,7 +127,7 @@ function Profil() {
             style={{
               border: "2px solid #E8640C",
               borderRadius: "12px",
-              padding: "80px",
+              padding: "clamp(24px, 8vw, 80px)",
               textAlign: "center",
               backgroundColor: "#fff",
             }}
