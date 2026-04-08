@@ -25,19 +25,14 @@ function Profil() {
             backgroundColor: "#ffffff",
             borderRadius: "16px",
             padding: "20px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "16px",
+            position: "relative",
           }}
         >
           <div
             style={{
               display: "flex",
               gap: "16px",
-              alignItems: "center",
-              flex: 1,
-              minWidth: 0,
+              alignItems: "flex-start",
             }}
           >
             <img
@@ -46,55 +41,75 @@ function Profil() {
               style={{
                 width: "70px",
                 height: "70px",
-                minWidth: "70px",
-                flexShrink: 0,
                 borderRadius: "50%",
                 objectFit: "cover",
+                flexShrink: 0,
               }}
             />
 
-            <div>
+            <div style={{ maxWidth: "70%" }}>
               <h3
                 style={{
                   margin: 0,
                   color: "#333",
                   fontWeight: 700,
                   fontSize: "15px",
-                  maxWidth: "100%",
-                  wordBreak: "break-word",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
                 }}
               >
                 {profil.nama}
               </h3>
-              <p style={{ margin: "4px 0", color: "#888", fontSize: "12px" }}>
+              <p
+                style={{
+                  margin: "4px 0",
+                  color: "#888",
+                  fontSize: "12px",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                }}
+              >
                 @{profil.username}
               </p>
-              <p style={{ margin: 0, fontSize: "12px", color: "#555" }}>
+              <p
+                style={{
+                  marginTop: "8px",
+                  fontSize: "12px",
+                  color: "#555",
+                  lineHeight: "1.4",
+                }}
+              >
                 {profil.bio}
               </p>
             </div>
           </div>
 
-          <Link to="/edit-profil">
+          <Link
+            to="/edit-profil"
+            style={{
+              position: "absolute",
+              top: "16px",
+              right: "12px",
+            }}
+          >
             <button
               style={{
                 backgroundColor: "#FCE4D6",
                 border: "none",
-                padding: "6px 6px",
+                padding: "6px 10px",
                 borderRadius: "8px",
                 cursor: "pointer",
                 color: "#E8640C",
-                fontSize: "12px",
+                fontSize: "8px",
                 fontWeight: 500,
                 display: "flex",
                 alignItems: "center",
                 gap: "6px",
-                alignSelf: window.innerWidth <= 768 ? "flex-end" : "auto",
-                whiteSpace: "nowrap",
-                flexShrink: 0,
               }}
             >
-              <img src={pensil} alt="edit" style={{ width: "14px" }} />
+              <img src={pensil} alt="edit" style={{ width: "10px" }} />
               Edit Profile
             </button>
           </Link>

@@ -170,7 +170,7 @@ function Daerah({ sudahDibaca = [] }) {
               boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
             }}
           >
-            <img src={iconDaerah2} style={{ color: "#999" }} />
+            <img src={iconDaerah2} style={{ color: "#999", width: "13px" }} />
             <input
               type="text"
               placeholder="Cari daerah"
