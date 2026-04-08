@@ -279,148 +279,141 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gridTemplateColumns:
+              window.innerWidth <= 768 ? "1fr" : "repeat(3, 1fr)",
             gap: "16px",
           }}
         >
           {provinsi.galeri.slice(0, 3).map((item, i) => (
-            <Link
-              to={`/kategori/${id}/${item.kategori}`}
+            <div
               key={i}
-              style={{ textDecoration: "none" }}
+              className="card-hover"
+              style={{
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                position: "relative",
+                cursor: "pointer",
+              }}
             >
-              <div
-                className="card-hover"
+              <img
+                src={item.foto}
+                alt={item.caption}
                 style={{
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-                  position: "relative",
-                  cursor: "pointer",
+                  width: "100%",
+                  height: "180px",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  backgroundColor: "rgba(0,0,0,0.3)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
                 }}
               >
                 <img
-                  src={item.foto}
-                  alt={item.caption}
+                  src={lensa}
+                  alt="lensa"
                   style={{
-                    width: "100%",
-                    height: "180px",
-                    objectFit: "cover",
-                    display: "block",
+                    width: "40px",
+                    height: "40px",
+                    objectFit: "contain",
                   }}
                 />
-
-                <div
+                <p
                   style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    backgroundColor: "rgba(0,0,0,0.3)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
+                    color: "white",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    margin: 0,
                   }}
                 >
-                  <img
-                    src={lensa}
-                    alt="lensa"
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <p
-                    style={{
-                      color: "white",
-                      fontSize: "13px",
-                      fontWeight: "500",
-                      margin: 0,
-                    }}
-                  >
-                    {item.caption}
-                  </p>
-                </div>
+                  {item.caption}
+                </p>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+            gridTemplateColumns:
+              window.innerWidth <= 768 ? "1fr" : "repeat(2, 1fr)",
             gap: "16px",
             marginTop: "16px",
+            width: window.innerWidth <= 768 ? "100%" : "66.6%",
+            margin: window.innerWidth <= 768 ? "16px 0 0" : "16px auto 0",
           }}
         >
           {provinsi.galeri.slice(3).map((item, i) => (
-            <Link
-              to={`/kategori/${id}/${item.kategori}`}
+            <div
               key={i}
-              style={{ textDecoration: "none" }}
+              className="card-hover"
+              style={{
+                borderRadius: "12px",
+                overflow: "hidden",
+                boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
+                position: "relative",
+                cursor: "pointer",
+              }}
             >
-              <div
-                className="card-hover"
+              <img
+                src={item.foto}
+                alt={item.caption}
                 style={{
-                  borderRadius: "12px",
-                  overflow: "hidden",
-                  boxShadow: "0 2px 12px rgba(0,0,0,0.1)",
-                  position: "relative",
-                  cursor: "pointer",
+                  width: "100%",
+                  height: "180px",
+                  objectFit: "cover",
+                  display: "block",
+                }}
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  backgroundColor: "rgba(0,0,0,0.3)",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "8px",
                 }}
               >
                 <img
-                  src={item.foto}
-                  alt={item.caption}
+                  src={lensa}
+                  alt="lensa"
                   style={{
-                    width: "100%",
-                    height: "180px",
-                    objectFit: "cover",
-                    display: "block",
+                    width: "40px",
+                    height: "40px",
+                    objectFit: "contain",
                   }}
                 />
-                <div
+                <p
                   style={{
-                    position: "absolute",
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    backgroundColor: "rgba(0,0,0,0.3)",
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "8px",
+                    color: "white",
+                    fontSize: "13px",
+                    fontWeight: "500",
+                    margin: 0,
                   }}
                 >
-                  <img
-                    src={lensa}
-                    alt="lensa"
-                    style={{
-                      width: "40px",
-                      height: "40px",
-                      objectFit: "contain",
-                    }}
-                  />
-                  <p
-                    style={{
-                      color: "white",
-                      fontSize: "13px",
-                      fontWeight: "500",
-                      margin: 0,
-                    }}
-                  >
-                    {item.caption}
-                  </p>
-                </div>
+                  {item.caption}
+                </p>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </div>

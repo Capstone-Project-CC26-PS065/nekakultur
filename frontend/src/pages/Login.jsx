@@ -28,7 +28,6 @@ function Login() {
           gap: "40px",
         }}
       >
-        {/* LOGO */}
         <Link
           to="/"
           style={{
@@ -50,7 +49,6 @@ function Login() {
           NekaKultur
         </Link>
 
-        {/* CONTENT */}
         <div
           className="content"
           style={{
@@ -60,7 +58,6 @@ function Login() {
             alignItems: "center",
           }}
         >
-          {/* TEXT */}
           <div
             className="text"
             style={{
@@ -102,7 +99,6 @@ function Login() {
               untuk melestarikan dan mempromosikan kekayaan budaya Indonesia.
             </p>
 
-            {/* Tombol di mobile muncul setelah deskripsi */}
             <div
               className="buttons"
               style={{
@@ -114,6 +110,7 @@ function Login() {
             >
               <Link
                 to="/login/masuk"
+                className="card-hover"
                 style={{
                   padding: "12px 32px",
                   borderRadius: "8px",
@@ -128,6 +125,7 @@ function Login() {
               </Link>
               <Link
                 to="/login/daftar"
+                className="card-hover"
                 style={{
                   padding: "12px 32px",
                   borderRadius: "8px",
@@ -142,7 +140,6 @@ function Login() {
               </Link>
             </div>
 
-            {/* Wayang di mobile muncul di bawah tombol */}
             <img
               src={wayang}
               alt="Wayang"
@@ -154,7 +151,6 @@ function Login() {
             />
           </div>
 
-          {/* Wayang di desktop di sebelah kanan */}
           <img
             src={wayang}
             alt="Wayang"
@@ -168,7 +164,6 @@ function Login() {
         </div>
       </div>
 
-      {/* DESKTOP */}
       <style>
         {`
     .wayang-mobile { display: block; }
