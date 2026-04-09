@@ -21,7 +21,6 @@ function Home() {
           gap: "20px",
         }}
       >
-        {/* TEXT */}
         <div style={{ maxWidth: "500px" }}>
           <h1
             style={{
@@ -43,7 +42,6 @@ function Home() {
           </h1>
         </div>
 
-        {/* WAYANG (POSISI BARU - TENGAH) */}
         <img
           src={wayang}
           alt="Wayang"
@@ -54,7 +52,6 @@ function Home() {
           }}
         />
 
-        {/* DESKRIPSI */}
         <p
           style={{
             fontSize: "16px",
@@ -66,7 +63,6 @@ function Home() {
           melestarikan dan mempromosikan kekayaan budaya Indonesia.
         </p>
 
-        {/* BUTTON */}
         <div
           style={{
             display: "flex",
@@ -108,7 +104,6 @@ function Home() {
         </div>
       </div>
 
-      {/* DESKTOP VERSION */}
       <style>
         {`
           @media (min-width: 768px) {

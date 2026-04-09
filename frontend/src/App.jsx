@@ -11,6 +11,8 @@ import DetailDaerah from "./pages/DetailDaerah";
 import DetailKategori from "./pages/DetailKategori";
 import Profil from "./pages/Profil";
 import Kuis from "./pages/Kuis";
+import EditProfil from "./pages/EditProfil";
+import UploadKarya from "./pages/UploadKarya";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -113,6 +115,22 @@ function App() {
                     element={
                       <PageTransition>
                         <Profil />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/edit-profil"
+                    element={
+                      <PageTransition>
+                        <EditProfil />
+                      </PageTransition>
+                    }
+                  />
+                  <Route
+                    path="/upload"
+                    element={
+                      <PageTransition>
+                        <UploadKarya />
                       </PageTransition>
                     }
                   />

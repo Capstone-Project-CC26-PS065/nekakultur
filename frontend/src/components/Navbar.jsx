@@ -41,6 +41,14 @@ function Navbar() {
         Location.pathname.startsWith("/kuis")
       );
     }
+
+    if (path === "/profil") {
+      return (
+        Location.pathname.startsWith("/profil") ||
+        Location.pathname.startsWith("/edit-profil") ||
+        Location.pathname.startsWith("/upload")
+      );
+    }
     return Location.pathname === path;
   };
   const navRefs = useRef([]);
