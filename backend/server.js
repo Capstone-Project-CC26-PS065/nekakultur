@@ -8,11 +8,11 @@ const rateLimit = require("express-rate-limit");
 const connectDB = require("./config/db");
 
 // middleware
+const logger = require("./middleware/logger");
 const errorHandler = require("./middleware/errorMiddleware");
 const notFound = require("./middleware/notFound");
-const logger = require("./middleware/logger");
 
-// connect database
+// connect DB
 connectDB();
 
 const app = express();
@@ -22,9 +22,10 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
+// rate limit
 app.use(rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100
+  windowMs: process.env.RATE_LIMIT_WINDOW * 60 * 1000 || 900000,
+  max: process.env.RATE_LIMIT_MAX || 100
 }));
 
 // logger
@@ -34,16 +35,16 @@ app.use(logger);
 app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/learning", require("./routes/learningRoutes"));
 
-// test route
+// root
 app.get("/", (req, res) => {
   res.send("🚀 NEKACULTURE API RUNNING");
 });
 
-// error handling
+// error handler
 app.use(notFound);
 app.use(errorHandler);
 
-// run server
+// start server
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
