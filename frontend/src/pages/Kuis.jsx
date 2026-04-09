@@ -139,6 +139,7 @@ function Kuis({ onSelesaiKuis }) {
         >
           <Link
             to={`/daerah/${id}`}
+            className="card-hover"
             style={{
               color: "white",
               textDecoration: "none",

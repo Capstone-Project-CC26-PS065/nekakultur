@@ -470,22 +470,30 @@ function DetailKategori() {
       <div
         style={{
           backgroundColor: "#8B2500",
-          padding: "24px 80px",
+          padding: "24px clamp(16px, 6vw, 80px)",
           color: "white",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
         }}
       >
         <Link
           to={`/daerah/${id}`}
+          className="card-hover"
           style={{
             color: "white",
             textDecoration: "none",
-            textAlign: "left",
             fontSize: "14px",
-            opacity: 0.8,
+            backgroundColor: "rgba(0,0,0,0.2)",
+            padding: "6px 14px",
+            borderRadius: "999px",
+            display: "inline-block",
+            marginBottom: "12px",
           }}
         >
           ← Kembali
         </Link>
+
         <h1
           style={{
             fontSize: "17px",

@@ -57,7 +57,22 @@ function EditProfil() {
   return (
     <div style={{ backgroundColor: "#F5EBDD", minHeight: "100vh" }}>
       <div style={{ padding: "clamp(16px, 6vw, 80px)" }}>
-        <Link to="/profil">← Kembali</Link>
+        <Link
+          to="/profil"
+          className="card-hover"
+          style={{
+            color: "white",
+            textDecoration: "none",
+            fontSize: "14px",
+            backgroundColor: "rgba(0,0,0,0.2)",
+            padding: "6px 14px",
+            borderRadius: "999px",
+            display: "inline-block",
+            marginBottom: "12px",
+          }}
+        >
+          ← Kembali
+        </Link>
 
         <h2 style={{ color: "#8B2500", marginTop: "16px", fontWeight: "bold" }}>
           Edit Profil

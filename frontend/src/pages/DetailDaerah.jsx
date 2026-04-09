@@ -192,6 +192,7 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
 
           <Link
             to="/daerah"
+            className="card-hover"
             style={{
               position: "absolute",
               top: "20px",
