@@ -5,12 +5,19 @@ import balitr2 from "../assets/balitr2.jpg";
 import balitr3 from "../assets/balitr3.jpg";
 import balitr4 from "../assets/balitr4.jpg";
 import kecak from "../assets/kecak.jpg";
-import pabali from "../assets/pa-bali.jpg";
-import ambali from "../assets/am-bali.jpg";
-import sabali from "../assets/sa-bali.jpg";
-import mkbali from "../assets/mk-bali.jpg";
+import bajubali1 from "../assets/bajubali1.jpg";
+import musikbali1 from "../assets/musikbali1.jpg";
+import sbali2 from "../assets/sbali2.jpg";
+import makanbali1 from "../assets/makanbali1.jpg";
 import lensa from "../assets/lensa.png";
 import quiz from "../assets/quiz.png";
+import trpapua1 from "../assets/trpapua1.jpg";
+import trpapua2 from "../assets/trpapua2.jpg";
+import taripapua1 from "../assets/taripapua1.jpg";
+import bajupapua1 from "../assets/bajupapua1.jpg";
+import musikpapua2 from "../assets/musikpapua2.jpg";
+import spapua1 from "../assets/spapua1.jpg";
+import mpapua1 from "../assets/mpapua1.jpg";
 
 const dataProvinsi = {
   bali: {
@@ -28,25 +35,58 @@ const dataProvinsi = {
     galeri: [
       { foto: kecak, caption: "Tarian Tradisional Bali", kategori: "tarian" },
       {
-        foto: pabali,
+        foto: bajubali1,
         caption: "Pakaian Tradisional Bali",
         kategori: "pakaian",
       },
       {
-        foto: ambali,
+        foto: musikbali1,
         caption: "Alat Musik Tradisional Bali",
         kategori: "musik",
       },
       {
-        foto: sabali,
+        foto: sbali2,
         caption: "Senjata Tradisional Bali",
         kategori: "senjata",
       },
       {
-        foto: mkbali,
+        foto: makanbali1,
         caption: "Makanan Khas Tradisional Bali",
         kategori: "makanan",
       },
+    ],
+  },
+  papua: {
+    nama: "Papua",
+    deskripsi:
+      "Karakteristik fisik yang megah dan budaya yang unik, Mutiara Hitam dari timur Indonesia.",
+    video: "https://www.youtube.com/embed/awmdP6x_Rsk?si=U8n3wFLHSgBkVHjl",
+    slideshow: [
+      { foto: trpapua1, caption: "Rumah Honai" },
+      { foto: trpapua2, caption: "Rumah Ebei" },
+    ],
+    galeri: [
+      {
+        foto: taripapua1,
+        caption: "Tarian Tradisional Papua",
+        kategori: "tarian",
+      },
+      {
+        foto: bajupapua1,
+        caption: "Pakaian Tradisional Papua",
+        kategori: "pakaian",
+      },
+      {
+        foto: musikpapua2,
+        caption: "Alat Musik Tradisional Papua",
+        kategori: "musik",
+      },
+      {
+        foto: spapua1,
+        caption: "Senjata Tradisional Papua",
+        kategori: "senjata",
+      },
+      { foto: mpapua1, caption: "Makanan Khas Papua", kategori: "makanan" },
     ],
   },
 };
@@ -75,7 +115,10 @@ function DetailDaerah({ sudahDibaca = [], onTandai, onMulaiDipelajari }) {
     return (
       <div style={{ padding: "48px 80px" }}>
         <Link to="/daerah">← Kembali</Link>
-        <p>Provinsi tidak ditemukan.</p>
+        <p>
+          Project ini merupakan versi awal yang menampilkan beberapa provinsi
+          sebagai representasi, dan nantinya dapat dikembangkan lebih luas..
+        </p>
       </div>
     );
   }

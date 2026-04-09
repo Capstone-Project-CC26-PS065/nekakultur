@@ -16,6 +16,19 @@ import makanbali1 from "../assets/makanbali1.jpg";
 import makanbali2 from "../assets/makanbali2.jpg";
 import makanbali3 from "../assets/makanbali3.jpg";
 import makanbali4 from "../assets/makanbali4.jpg";
+import taripapua1 from "../assets/taripapua1.jpg";
+import taripapua2 from "../assets/taripapua2.jpg";
+import taripapua3 from "../assets/taripapua3.jpg";
+import bajupapua1 from "../assets/bajupapua1.jpg";
+import musikpapua1 from "../assets/musikpapua1.jpg";
+import musikpapua2 from "../assets/musikpapua2.jpg";
+import musikpapua3 from "../assets/musikpapua3.png";
+import spapua1 from "../assets/spapua1.jpg";
+import spapua2 from "../assets/spapua2.jpg";
+import spapua3 from "../assets/spapua3.jpg";
+import mpapua1 from "../assets/mpapua1.jpg";
+import mpapua2 from "../assets/mpapua2.jpg";
+import mpapua3 from "../assets/mpapua3.jpg";
 
 const dataKategori = {
   bali: {
@@ -240,6 +253,195 @@ const dataKategori = {
             "Menggunakan bumbu khas Bali",
             "Sering disajikan saat upacara",
             "Rasa gurih dan kaya rempah",
+          ],
+        },
+      ],
+    },
+  },
+
+  papua: {
+    tarian: {
+      judul: "Tarian Tradisional",
+      provinsi: "Papua",
+      slides: [
+        {
+          foto: taripapua1,
+          nama: "Tari Sajojo",
+          deskripsi:
+            "Tari Sajojo adalah tarian pergaulan khas Papua yang energik dan penuh semangat. Tarian ini dibawakan secara berkelompok dengan gerakan kaki yang dinamis dan ritmis mengikuti irama musik.",
+          ciri: [
+            "Dibawakan secara berkelompok",
+            "Gerakan kaki yang dinamis",
+            "Irama musik yang energik",
+            "Tarian pergaulan yang menyenangkan",
+          ],
+        },
+        {
+          foto: taripapua2,
+          nama: "Tari Pangkur Sagu",
+          deskripsi:
+            "Tari Pangkur Sagu menggambarkan proses pembuatan sagu yang merupakan makanan pokok masyarakat Papua. Tarian ini mencerminkan kehidupan sehari-hari dan kearifan lokal masyarakat Papua.",
+          ciri: [
+            "Menggambarkan proses pengolahan sagu",
+            "Mencerminkan kehidupan sehari-hari",
+            "Gerakan yang naturalis",
+            "Kaya makna budaya lokal",
+          ],
+        },
+        {
+          foto: taripapua3,
+          nama: "Tari Cendrawasih",
+          deskripsi:
+            "Tari Cendrawasih terinspirasi dari keindahan burung Cendrawasih, burung khas Papua yang terkenal dengan keindahan bulunya. Tarian ini menggambarkan keanggunan dan kebebasan burung tersebut.",
+          ciri: [
+            "Terinspirasi dari burung Cendrawasih",
+            "Gerakan anggun dan lembut",
+            "Kostum menyerupai bulu burung",
+            "Melambangkan kebebasan dan keindahan",
+          ],
+        },
+      ],
+    },
+    pakaian: {
+      judul: "Pakaian Tradisional",
+      provinsi: "Papua",
+      slides: [
+        {
+          foto: bajupapua1,
+          nama: "Sali dan Rok Rumbai",
+          deskripsi:
+            "Sali adalah pakaian tradisional wanita Papua berupa rok yang terbuat dari serat alam. Rok Rumbai merupakan pakaian khas yang digunakan dalam upacara adat dan tarian tradisional Papua.",
+          ciri: [
+            "Terbuat dari serat alam alami",
+            "Digunakan dalam upacara adat",
+            "Merupakan pakaian khas wanita Papua",
+            "Mencerminkan kearifan lokal",
+          ],
+        },
+      ],
+    },
+    musik: {
+      judul: "Alat Musik Tradisional",
+      provinsi: "Papua",
+      slides: [
+        {
+          foto: musikpapua1,
+          nama: "Triton",
+          deskripsi:
+            "Triton adalah alat musik tiup tradisional Papua yang terbuat dari cangkang kerang laut besar. Suaranya yang keras dan khas digunakan untuk komunikasi antar kampung dan upacara adat.",
+          ciri: [
+            "Terbuat dari cangkang kerang",
+            "Alat musik tiup",
+            "Suara keras dan khas",
+            "Digunakan untuk komunikasi dan upacara",
+          ],
+        },
+        {
+          foto: musikpapua2,
+          nama: "Tifa",
+          deskripsi:
+            "Tifa adalah alat musik pukul khas Papua dan Maluku yang terbuat dari kayu berongga dengan membran kulit binatang. Tifa digunakan dalam berbagai upacara adat dan pertunjukan seni.",
+          ciri: [
+            "Terbuat dari kayu berongga",
+            "Membran dari kulit binatang",
+            "Alat musik pukul",
+            "Digunakan dalam upacara adat",
+          ],
+        },
+        {
+          foto: musikpapua3,
+          nama: "Fuu",
+          deskripsi:
+            "Fuu adalah alat musik tiup tradisional Papua yang terbuat dari bambu. Alat musik ini menghasilkan suara yang unik dan digunakan dalam berbagai kegiatan budaya masyarakat Papua.",
+          ciri: [
+            "Terbuat dari bambu",
+            "Alat musik tiup",
+            "Suara unik khas Papua",
+            "Digunakan dalam kegiatan budaya",
+          ],
+        },
+      ],
+    },
+    senjata: {
+      judul: "Senjata Tradisional",
+      provinsi: "Papua",
+      slides: [
+        {
+          foto: spapua1,
+          nama: "Belati",
+          deskripsi:
+            "Belati Papua adalah senjata tradisional yang terbuat dari tulang burung kasuari. Senjata ini memiliki nilai budaya tinggi dan digunakan dalam upacara adat serta sebagai alat berburu.",
+          ciri: [
+            "Terbuat dari tulang burung kasuari",
+            "Memiliki nilai budaya tinggi",
+            "Digunakan dalam upacara adat",
+            "Berfungsi sebagai alat berburu",
+          ],
+        },
+        {
+          foto: spapua2,
+          nama: "Kapak Batu",
+          deskripsi:
+            "Kapak Batu adalah senjata dan alat tradisional Papua yang terbuat dari batu yang diasah hingga tajam. Kapak ini digunakan sebagai alat pertahanan dan peralatan sehari-hari.",
+          ciri: [
+            "Terbuat dari batu yang diasah",
+            "Berfungsi sebagai senjata dan alat",
+            "Digunakan untuk pertahanan diri",
+            "Peralatan penting zaman dahulu",
+          ],
+        },
+        {
+          foto: spapua3,
+          nama: "Tombak (Tul)",
+          deskripsi:
+            "Tombak atau Tul adalah senjata tradisional Papua yang digunakan untuk berburu dan berperang. Tombak Papua memiliki bentuk yang khas dengan ujung yang tajam dan terbuat dari kayu keras.",
+          ciri: [
+            "Terbuat dari kayu keras",
+            "Digunakan untuk berburu dan berperang",
+            "Ujung yang tajam dan kuat",
+            "Senjata utama masyarakat Papua",
+          ],
+        },
+      ],
+    },
+    makanan: {
+      judul: "Makanan Khas Tradisional",
+      provinsi: "Papua",
+      slides: [
+        {
+          foto: mpapua1,
+          nama: "Ulat Sagu",
+          deskripsi:
+            "Ulat Sagu adalah makanan tradisional Papua yang berasal dari larva kumbang yang hidup di pohon sagu. Makanan ini kaya protein dan telah menjadi bagian dari tradisi kuliner masyarakat Papua.",
+          ciri: [
+            "Sumber protein tinggi",
+            "Berasal dari larva kumbang sagu",
+            "Makanan tradisional bernutrisi",
+            "Bagian dari tradisi kuliner Papua",
+          ],
+        },
+        {
+          foto: mpapua2,
+          nama: "Udang Selingkuh",
+          deskripsi:
+            "Udang Selingkuh adalah kuliner khas Papua yang unik, merupakan udang air tawar dengan capit seperti kepiting. Hidangan ini sangat populer di Wamena dan menjadi kebanggaan kuliner Papua.",
+          ciri: [
+            "Udang air tawar dengan capit kepiting",
+            "Populer di daerah Wamena",
+            "Rasa yang khas dan lezat",
+            "Kebanggaan kuliner Papua",
+          ],
+        },
+        {
+          foto: mpapua3,
+          nama: "Papeda Ikan Kuah Kuning",
+          deskripsi:
+            "Papeda adalah makanan pokok khas Papua yang terbuat dari tepung sagu. Biasanya disajikan dengan ikan kuah kuning yang kaya rempah, menjadikannya hidangan yang lezat dan bergizi.",
+          ciri: [
+            "Terbuat dari tepung sagu",
+            "Makanan pokok masyarakat Papua",
+            "Disajikan dengan ikan kuah kuning",
+            "Kaya rempah dan bergizi",
           ],
         },
       ],

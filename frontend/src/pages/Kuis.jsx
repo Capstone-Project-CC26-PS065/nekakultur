@@ -25,6 +25,30 @@ const dataKuis = {
       },
     ],
   },
+
+  papua: {
+    nama: "Papua",
+    soal: [
+      {
+        pertanyaan:
+          "Apa nama rumah adat khas Papua yang berbentuk bulat dan beratap jerami?",
+        pilihan: ["Rumah Gadang", "Rumah Honai", "Rumah Joglo", "Rumah Limas"],
+        jawaban: "Rumah Honai",
+      },
+      {
+        pertanyaan:
+          "Apa nama alat musik tradisional Papua yang terkenal dan dimainkan dengan cara dipukul?",
+        pilihan: ["Angklung", "Tifa", "Gamelan", "Kolintang"],
+        jawaban: "Tifa",
+      },
+      {
+        pertanyaan:
+          "Makanan khas Papua yang terbuat dari sagu dan biasanya disajikan dengan kuah kuning adalah?",
+        pilihan: ["Papeda", "Gudeg", "Rawon", "Rendang"],
+        jawaban: "Papeda",
+      },
+    ],
+  },
 };
 
 function Kuis({ onSelesaiKuis }) {
