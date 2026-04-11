@@ -1,9 +1,42 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import wayang from "../assets/wayang.png";
 import motif from "../assets/motif.png";
 import logo2 from "../assets/logo2.jpeg";
 
 function Login() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const API = "http://localhost:5000/api";
+
+  const handleLogin = async () => {
+    try {
+      const res = await fetch(`${API}/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, password }),
+      });
+
+      const data = await res.json();
+
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+        alert("Login berhasil 🚀");
+        navigate("/dashboard");
+      } else {
+        alert("Login gagal ❌");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Terjadi error");
+    }
+  };
+
   return (
     <div
       style={{
@@ -28,6 +61,7 @@ function Login() {
           gap: "40px",
         }}
       >
+        {/* LOGO */}
         <Link
           to="/"
           style={{
@@ -41,165 +75,66 @@ function Login() {
             gap: "8px",
           }}
         >
-          <img
-            src={logo2}
-            alt="logo"
-            style={{ width: "30px", height: "30px", objectFit: "contain" }}
-          />
+          <img src={logo2} alt="logo" style={{ width: "30px" }} />
           NekaKultur
         </Link>
 
-        <div
-          className="content"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "24px",
-            alignItems: "center",
-          }}
-        >
-          <div
-            className="text"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              gap: "16px",
-              textAlign: "center",
-              alignItems: "center",
-            }}
-          >
-            <h1
-              style={{
-                fontSize: "clamp(26px, 5vw, 52px)",
-                fontWeight: "bold",
-                lineHeight: "1.3",
-              }}
-            >
+        <div className="content" style={{ display: "flex", gap: "24px" }}>
+          {/* LEFT */}
+          <div className="text">
+            <h1>
               Selamat datang di <br />
-              <span
-                style={{
-                  fontFamily: "'Prosto One', serif",
-                  color: "#E8640C",
-                  WebkitTextStroke: "0.1px #FFB347",
-                }}
-              >
-                NekaKultur
-              </span>
+              <span style={{ color: "#E8640C" }}>NekaKultur</span>
             </h1>
 
-            <p
-              style={{
-                fontSize: "clamp(13px, 1.5vw, 16px)",
-                color: "#f0d0c0",
-                lineHeight: "1.7",
-                maxWidth: "500px",
-              }}
-            >
-              NekaKultur adalah platform edukasi interaktif yang didedikasikan
-              untuk melestarikan dan mempromosikan kekayaan budaya Indonesia.
+            <p>
+              Platform edukasi interaktif untuk budaya Indonesia.
             </p>
 
-            <div
-              className="buttons"
-              style={{
-                display: "flex",
-                gap: "16px",
-                justifyContent: "center",
-                flexWrap: "wrap",
-              }}
-            >
-              <Link
-                to="/login/masuk"
-                className="card-hover"
+            {/* FORM LOGIN */}
+            <div style={{ marginTop: "20px" }}>
+              <input
+                type="text"
+                placeholder="Nama"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                style={{ padding: "10px", marginBottom: "10px", width: "100%" }}
+              />
+
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                style={{ padding: "10px", marginBottom: "10px", width: "100%" }}
+              />
+
+              <button
+                onClick={handleLogin}
                 style={{
-                  padding: "12px 32px",
-                  borderRadius: "8px",
-                  fontWeight: "bold",
-                  backgroundColor: "#E8640C",
+                  padding: "10px",
+                  background: "#E8640C",
                   color: "white",
-                  border: "2px solid #E8640C",
-                  textDecoration: "none",
+                  border: "none",
+                  width: "100%",
                 }}
               >
-                Masuk
-              </Link>
-              <Link
-                to="/login/daftar"
-                className="card-hover"
-                style={{
-                  padding: "12px 32px",
-                  borderRadius: "8px",
-                  fontWeight: "bold",
-                  backgroundColor: "white",
-                  color: "#8B2500",
-                  border: "2px solid white",
-                  textDecoration: "none",
-                }}
-              >
-                Daftar
-              </Link>
+                Login
+              </button>
             </div>
 
-            <img
-              src={wayang}
-              alt="Wayang"
-              className="wayang-mobile"
-              style={{
-                width: "clamp(160px, 50vw, 220px)",
-                display: "block",
-              }}
-            />
+            <p style={{ marginTop: "10px" }}>
+              Belum punya akun?{" "}
+              <Link to="/login/daftar" style={{ color: "#FFB347" }}>
+                Daftar
+              </Link>
+            </p>
           </div>
 
-          <img
-            src={wayang}
-            alt="Wayang"
-            className="wayang"
-            style={{
-              width: "320px",
-              marginRight: "100px",
-              marginBottom: "40px",
-            }}
-          />
+          {/* IMAGE */}
+          <img src={wayang} alt="Wayang" style={{ width: "300px" }} />
         </div>
       </div>
-
-      <style>
-        {`
-    .wayang-mobile { display: block; }
-    .wayang { display: none; }
-   
-         
-
-    @media (min-width: 768px) {
-     
-
-      .content {
-        flex-direction: row !important;
-        justify-content: space-between;
-        align-items: center;
-      }
-    
-
-      .text {
-        align-items: flex-start !important;
-        text-align: left !important;
-        max-width: 520px;
-      }
-
-      .wayang-mobile { display: none !important; }
-      .wayang { display: block !important; }
-
-      .buttons {
-        justify-content: flex-start !important;
-      }
-
-     
-
-      
-    }
-  `}
-      </style>
     </div>
   );
 }
