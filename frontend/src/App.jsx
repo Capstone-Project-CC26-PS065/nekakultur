@@ -1,8 +1,10 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useState } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+
 import Navbar from "./components/Navbar";
 import PageTransition from "./components/PageTransition";
+
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Login2 from "./pages/Login2";
@@ -15,14 +17,32 @@ import EditProfil from "./pages/EditProfil";
 import UploadKarya from "./pages/UploadKarya";
 
 function App() {
+  const location = useLocation();
+
+  // 🔥 LOGIN STATE (AMBIL DARI TOKEN)
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   const [sudahDibaca, setSudahDibaca] = useState([]);
   const [sedangDipelajari, setSedangDipelajari] = useState([]);
   const [nilaiKuis, setNilaiKuis] = useState({});
 
+  // ✅ CEK TOKEN SAAT APP LOAD
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+
+  // 🔥 LOGOUT FUNCTION
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    setIsLoggedIn(false);
+  };
+
   return (
     <AnimatePresence mode="wait">
-      <Routes>
+      <Routes location={location} key={location.pathname}>
+        
+        {/* LOGIN */}
         <Route
           path="/login"
           element={
@@ -45,12 +65,14 @@ function App() {
           }
         />
 
+        {/* PROTECTED AREA */}
         <Route
           path="/*"
           element={
             isLoggedIn ? (
               <>
-                <Navbar onLogout={() => setIsLoggedIn(false)} />
+                <Navbar onLogout={handleLogout} />
+
                 <Routes>
                   <Route
                     path="/"
@@ -60,6 +82,7 @@ function App() {
                       </PageTransition>
                     }
                   />
+
                   <Route
                     path="/daerah"
                     element={
@@ -72,6 +95,7 @@ function App() {
                       </PageTransition>
                     }
                   />
+
                   <Route
                     path="/daerah/:id"
                     element={
@@ -83,13 +107,17 @@ function App() {
                           }
                           onMulaiDipelajari={(id) => {
                             if (!sedangDipelajari.includes(id)) {
-                              setSedangDipelajari([...sedangDipelajari, id]);
+                              setSedangDipelajari([
+                                ...sedangDipelajari,
+                                id,
+                              ]);
                             }
                           }}
                         />
                       </PageTransition>
                     }
                   />
+
                   <Route
                     path="/kategori/:id/:kategori"
                     element={
@@ -98,18 +126,23 @@ function App() {
                       </PageTransition>
                     }
                   />
+
                   <Route
                     path="/kuis/:id"
                     element={
                       <PageTransition>
                         <Kuis
                           onSelesaiKuis={(id, nilai) =>
-                            setNilaiKuis({ ...nilaiKuis, [id]: nilai })
+                            setNilaiKuis({
+                              ...nilaiKuis,
+                              [id]: nilai,
+                            })
                           }
                         />
                       </PageTransition>
                     }
                   />
+
                   <Route
                     path="/profil"
                     element={
@@ -118,6 +151,7 @@ function App() {
                       </PageTransition>
                     }
                   />
+
                   <Route
                     path="/edit-profil"
                     element={
@@ -126,6 +160,7 @@ function App() {
                       </PageTransition>
                     }
                   />
+
                   <Route
                     path="/upload"
                     element={
