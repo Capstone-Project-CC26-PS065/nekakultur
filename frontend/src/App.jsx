@@ -7,7 +7,6 @@ import PageTransition from "./components/PageTransition";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Login2 from "./pages/Login2";
 import Daerah from "./pages/Daerah";
 import DetailDaerah from "./pages/DetailDaerah";
 import DetailKategori from "./pages/DetailKategori";
@@ -19,20 +18,20 @@ import UploadKarya from "./pages/UploadKarya";
 function App() {
   const location = useLocation();
 
-  // 🔥 LOGIN STATE (AMBIL DARI TOKEN)
+  // 🔐 LOGIN STATE
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [sudahDibaca, setSudahDibaca] = useState([]);
   const [sedangDipelajari, setSedangDipelajari] = useState([]);
   const [nilaiKuis, setNilaiKuis] = useState({});
 
-  // ✅ CEK TOKEN SAAT APP LOAD
+  // ✅ AUTO LOGIN (CEK TOKEN)
   useEffect(() => {
     const token = localStorage.getItem("token");
     setIsLoggedIn(!!token);
   }, []);
 
-  // 🔥 LOGOUT FUNCTION
+  // 🔓 LOGOUT
   const handleLogout = () => {
     localStorage.removeItem("token");
     setIsLoggedIn(false);
@@ -42,7 +41,7 @@ function App() {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         
-        {/* LOGIN */}
+        {/* 🔐 LOGIN PAGE */}
         <Route
           path="/login"
           element={
@@ -54,18 +53,7 @@ function App() {
           }
         />
 
-        <Route
-          path="/login/:mode"
-          element={
-            isLoggedIn ? (
-              <Navigate to="/" />
-            ) : (
-              <Login2 onLogin={() => setIsLoggedIn(true)} />
-            )
-          }
-        />
-
-        {/* PROTECTED AREA */}
+        {/* 🔒 PROTECTED ROUTES */}
         <Route
           path="/*"
           element={
