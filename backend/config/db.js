@@ -1,12 +1,11 @@
 const { Sequelize } = require("sequelize");
-require("dotenv").config();
 
 const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USER,
-  process.env.DB_PASSWORD,
+  "nekakultur_db",
+  "root",
+  "",
   {
-    host: process.env.DB_HOST,
+    host: "127.0.0.1",
     dialect: "mysql",
     logging: false,
   }
@@ -15,9 +14,10 @@ const sequelize = new Sequelize(
 const connectDB = async () => {
   try {
     await sequelize.authenticate();
-    console.log("✅ MySQL Connected...");
-  } catch (error) {
-    console.error("❌ DB Error:", error);
+    console.log("✅ DB Connected");
+  } catch (err) {
+    console.log("❌ DB Error:", err);
+    throw err;
   }
 };
 

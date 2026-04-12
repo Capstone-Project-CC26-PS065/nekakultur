@@ -1,6 +1,6 @@
 const materials = require("../data/materials");
 
-// GET MATERIAL BY LEVEL
+// ✅ GET MATERIAL BY LEVEL
 exports.getMaterials = (req, res) => {
   const { level } = req.query;
 
@@ -8,12 +8,32 @@ exports.getMaterials = (req, res) => {
     return res.status(400).json({ message: "Level wajib diisi" });
   }
 
-  const result = materials.filter((m) => m.level === level);
+  const result = materials.filter(
+    (m) => String(m.level) === String(level)
+  );
 
   res.json(result);
 };
 
-// ADD MATERIAL (ADMIN)
+// ✅ GET ALL MATERIALS (tambahan penting)
+exports.getAllMaterials = (req, res) => {
+  res.json(materials);
+};
+
+// ✅ GET MATERIAL BY ID
+exports.getMaterialById = (req, res) => {
+  const { id } = req.params;
+
+  const materi = materials.find((m) => m.id == id);
+
+  if (!materi) {
+    return res.status(404).json({ message: "Materi tidak ditemukan" });
+  }
+
+  res.json(materi);
+};
+
+// ✅ ADD MATERIAL (ADMIN)
 exports.addMaterial = (req, res) => {
   const { title, level, content } = req.body;
 
@@ -30,13 +50,13 @@ exports.addMaterial = (req, res) => {
 
   materials.push(newMaterial);
 
-  res.json({
+  res.status(201).json({
     message: "Materi berhasil ditambahkan",
     data: newMaterial,
   });
 };
 
-// DELETE MATERIAL
+// ✅ DELETE MATERIAL
 exports.deleteMaterial = (req, res) => {
   const { id } = req.params;
 

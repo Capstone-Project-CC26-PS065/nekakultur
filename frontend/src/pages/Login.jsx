@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import wayang from "../assets/wayang.png";
 import wayang2 from "../assets/wayang2.png";
 import motif from "../assets/motif.png";
+import logo from "../assets/logo.png";
 
 function Login({ onLogin }) {
   const navigate = useNavigate();
 
-  const [mode, setMode] = useState("menu"); // menu | masuk | daftar
+  const [mode, setMode] = useState("menu");
   const [loading, setLoading] = useState(false);
 
   const [form, setForm] = useState({
@@ -18,6 +20,7 @@ function Login({ onLogin }) {
 
   const [showPassword, setShowPassword] = useState(false);
 
+  // 🔥 API BACKEND
   const API = "http://localhost:5000/api";
 
   const handleChange = (e) => {
@@ -39,12 +42,15 @@ function Login({ onLogin }) {
 
       setLoading(true);
 
-      const endpoint =
-        mode === "masuk" ? "/users/login" : "/users/register";
+      const endpoint = mode === "masuk" ? "/users/login" : "/users/register";
 
+      // ✅ FIX PAYLOAD (PENTING)
       const payload =
         mode === "masuk"
-          ? { name: form.email, password: form.password }
+          ? {
+              email: form.email, // 🔥 FIX DISINI
+              password: form.password,
+            }
           : {
               name: form.nama,
               email: form.email,
@@ -66,14 +72,14 @@ function Login({ onLogin }) {
         return;
       }
 
-      // LOGIN
+      // ✅ LOGIN SUCCESS
       if (mode === "masuk") {
         localStorage.setItem("token", data.token);
         onLogin();
         navigate("/");
       }
 
-      // REGISTER
+      // ✅ REGISTER SUCCESS
       if (mode === "daftar") {
         alert("Register berhasil 🎉");
         setMode("masuk");
@@ -86,31 +92,155 @@ function Login({ onLogin }) {
     }
   };
 
-  // ================= MENU AWAL =================
+  // ================= MENU =================
+
   if (mode === "menu") {
     return (
       <div
         style={{
           minHeight: "100vh",
           backgroundColor: "#8B2500",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          flexDirection: "column",
+          backgroundImage: `url(${motif})`,
+          backgroundSize: "cover",
+          backgroundBlendMode: "overlay",
           color: "white",
         }}
       >
-        <h1>NekaKultur</h1>
+        <style>{`
+          .login-menu-wrap {
+            padding: 64px 48px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+          .login-menu-content {
+            max-width: 500px;
+            margin-left: 80px;
+          }
+          .login-menu-title { font-size: 52px; }
+          .login-menu-wayang-desktop { width: 220px; object-fit: contain; margin-right: 150px; }
+          .login-menu-wayang-mobile { display: none; width: 180px; object-fit: contain; margin: 24px 0; }
+          @media (max-width: 768px) {
+            .login-menu-wrap {
+              flex-direction: column;
+              padding: 32px 24px;
+              text-align: center;
+            }
+            .login-menu-content {
+              margin-left: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+            .login-menu-title { font-size: 32px; }
+            .login-menu-wayang-desktop { display: none; }
+            .login-menu-wayang-mobile { display: block; }
+          }
+        `}</style>
 
-        <button onClick={() => setMode("masuk")}>Masuk</button>
-        <button onClick={() => setMode("daftar")}>Daftar</button>
+        <div className="login-menu-wrap">
+          <div className="login-menu-content">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                marginBottom: "32px",
+              }}
+            >
+              <img
+                src={logo}
+                alt="logo"
+                style={{ width: "32px", height: "32px", objectFit: "contain" }}
+              />
+              <span
+                style={{
+                  fontFamily: "'Prosto One', serif",
+                  color: "#FF6600",
+                  fontSize: "22px",
+                  fontWeight: "bold",
+                }}
+              >
+                NekaKultur
+              </span>
+            </div>
+            <h1
+              className="login-menu-title"
+              style={{ fontWeight: "bold", marginBottom: "16px" }}
+            >
+              Selamat datang di <br />
+              <span
+                style={{
+                  fontFamily: "'Prosto One', serif",
+                  color: "#E8640C",
+                  WebkitTextStroke: "0.1px #FFB347",
+                }}
+              >
+                NekaKultur
+              </span>
+            </h1>
+            <img
+              src={wayang}
+              alt="Wayang"
+              className="login-menu-wayang-mobile"
+            />
+            <p
+              style={{
+                fontSize: "16px",
+                marginBottom: "48px",
+                color: "#f0d0c0",
+              }}
+            >
+              NekaKultur adalah platform edukasi interaktif yang didedikasikan
+              untuk melestarikan dan mempromosikan kekayaan budaya Indonesia.
+            </p>
+            <div style={{ display: "flex", gap: "16px" }}>
+              <button
+                onClick={() => setMode("masuk")}
+                className="card-hover"
+                style={{
+                  padding: "12px 48px",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  backgroundColor: "#E8640C",
+                  color: "white",
+                  border: "2px solid #E8640C",
+                  cursor: "pointer",
+                }}
+              >
+                Masuk
+              </button>
+              <button
+                onClick={() => setMode("daftar")}
+                className="card-hover"
+                style={{
+                  padding: "12px 48px",
+                  borderRadius: "8px",
+                  fontWeight: "bold",
+                  fontSize: "20px",
+                  backgroundColor: "white",
+                  color: "#8B2500",
+                  border: "2px solid white",
+                  cursor: "pointer",
+                }}
+              >
+                Daftar
+              </button>
+            </div>
+          </div>
+          <img
+            src={wayang}
+            alt="Wayang"
+            className="login-menu-wayang-desktop"
+          />
+        </div>
       </div>
     );
   }
 
-  const isLogin = mode === "masuk";
-
   // ================= FORM =================
+  const isLogin = mode === "masuk";
   return (
     <div
       style={{
@@ -123,102 +253,294 @@ function Login({ onLogin }) {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        padding: "40px 24px",
       }}
     >
+      <style>{`
+        .login-form-box {
+          display: flex;
+          width: 100%;
+          max-width: 860px;
+          min-height: 460px;
+          background-color: white;
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+        }
+        .login-wayang-side {
+          width: 280px;
+          background-color: #6B3A2A;
+          border-radius: 0 20px 20px 0;
+          display: flex;
+          align-items: flex-end;
+          justify-content: center;
+          overflow: hidden;
+        }
+        @media (max-width: 768px) {
+          .login-wayang-side { display: none; }
+        }
+      `}</style>
+
       <div style={{ width: "100%", maxWidth: "860px", marginBottom: "16px" }}>
         <button
           onClick={() => setMode("menu")}
-          style={{ background: "none", border: "none", color: "#FF6600" }}
+          style={{
+            fontFamily: "'Prosto One', serif",
+            color: "#FF6600",
+            fontSize: "22px",
+            fontWeight: "bold",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+          }}
         >
-          ← Kembali
+          NekaKultur
         </button>
       </div>
 
-      <div
-        style={{
-          backgroundColor: "white",
-          borderRadius: "20px",
-          display: "flex",
-          width: "100%",
-          maxWidth: "860px",
-          overflow: "hidden",
-        }}
-      >
-        {/* FORM */}
-        <div style={{ flex: 1, padding: "40px" }}>
-          <h2>{isLogin ? "Login" : "Register"}</h2>
-
-          {!isLogin && (
-            <input
-              type="text"
-              name="nama"
-              placeholder="Nama Lengkap"
-              value={form.nama}
-              onChange={handleChange}
-            />
-          )}
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={form.email}
-            onChange={handleChange}
-          />
-
-          <input
-            type={showPassword ? "text" : "password"}
-            name="password"
-            placeholder="Password"
-            value={form.password}
-            onChange={handleChange}
-          />
-
-          {!isLogin && (
-            <input
-              type="password"
-              name="konfirmasi"
-              placeholder="Konfirmasi Password"
-              value={form.konfirmasi}
-              onChange={handleChange}
-            />
-          )}
-
-          <button onClick={handleSubmit} disabled={loading}>
-            {loading
-              ? "Loading..."
-              : isLogin
-              ? "Login"
-              : "Daftar"}
-          </button>
-
-          <p>
-            {isLogin ? "Belum punya akun?" : "Sudah punya akun?"}
-            <span
-              onClick={() =>
-                setMode(isLogin ? "daftar" : "masuk")
-              }
-              style={{ color: "orange", cursor: "pointer" }}
-            >
-              {isLogin ? " Daftar" : " Login"}
-            </span>
-          </p>
-        </div>
-
-        {/* WAYANG */}
+      <div className="login-form-box">
         <div
           style={{
-            width: "250px",
-            backgroundColor: "#6B3A2A",
+            flex: 1,
+            padding: "48px 44px",
             display: "flex",
-            alignItems: "flex-end",
+            flexDirection: "column",
             justifyContent: "center",
           }}
         >
+          <h2
+            style={{
+              fontSize: "22px",
+              fontWeight: "bold",
+              color: "#111",
+              marginBottom: "6px",
+              textAlign: "center",
+            }}
+          >
+            {isLogin
+              ? "Satu Langkah untuk Melestarikan Warisan."
+              : "Bergabung dan Lestarikan Budaya!"}
+          </h2>
+          <p
+            style={{
+              fontSize: "14px",
+              color: "#888",
+              marginBottom: "28px",
+              textAlign: "center",
+            }}
+          >
+            {isLogin
+              ? "Masuk ke NekaKultur untuk mulai menjelajah"
+              : "Buat akun baru dan mulai perjalananmu"}
+          </p>
+
+          <div
+            style={{ display: "flex", flexDirection: "column", gap: "14px" }}
+          >
+            {!isLogin && (
+              <div>
+                <label
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: "600",
+                    color: "#444",
+                    display: "block",
+                    marginBottom: "5px",
+                  }}
+                >
+                  Nama Lengkap
+                </label>
+                <input
+                  type="text"
+                  name="nama"
+                  placeholder="Masukkan Nama Lengkap"
+                  value={form.nama}
+                  onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "10px 14px",
+                    borderRadius: "8px",
+                    border: "1px solid #ddd",
+                    fontSize: "14px",
+                    outline: "none",
+                    boxSizing: "border-box",
+                    backgroundColor: "#f9f9f9",
+                  }}
+                />
+              </div>
+            )}
+
+            <div>
+              <label
+                style={{
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  color: "#444",
+                  display: "block",
+                  marginBottom: "5px",
+                }}
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Masukkan Email"
+                value={form.email}
+                onChange={handleChange}
+                style={{
+                  width: "100%",
+                  padding: "10px 14px",
+                  borderRadius: "8px",
+                  border: "1px solid #ddd",
+                  fontSize: "14px",
+                  outline: "none",
+                  boxSizing: "border-box",
+                  backgroundColor: "#f9f9f9",
+                }}
+              />
+            </div>
+
+            <div>
+              <label
+                style={{
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  color: "#444",
+                  display: "block",
+                  marginBottom: "5px",
+                }}
+              >
+                Password
+              </label>
+              <div style={{ position: "relative" }}>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Masukkan Password"
+                  value={form.password}
+                  onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "10px 40px 10px 14px",
+                    borderRadius: "8px",
+                    border: "1px solid #ddd",
+                    fontSize: "14px",
+                    outline: "none",
+                    boxSizing: "border-box",
+                    backgroundColor: "#f9f9f9",
+                  }}
+                />
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: "absolute",
+                    right: "12px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    cursor: "pointer",
+                    fontSize: "16px",
+                    color: "#aaa",
+                  }}
+                >
+                  {showPassword ? "⌣" : "👁"}
+                </span>
+              </div>
+              {isLogin && (
+                <p
+                  style={{
+                    textAlign: "right",
+                    fontSize: "12px",
+                    color: "#E8640C",
+                    marginTop: "4px",
+                    cursor: "pointer",
+                  }}
+                >
+                  Lupa Password?
+                </p>
+              )}
+            </div>
+
+            {!isLogin && (
+              <div>
+                <label
+                  style={{
+                    fontSize: "13px",
+                    fontWeight: "600",
+                    color: "#444",
+                    display: "block",
+                    marginBottom: "5px",
+                  }}
+                >
+                  Konfirmasi Password
+                </label>
+                <input
+                  type="password"
+                  name="konfirmasi"
+                  placeholder="Ulangi Password"
+                  value={form.konfirmasi}
+                  onChange={handleChange}
+                  style={{
+                    width: "100%",
+                    padding: "10px 14px",
+                    borderRadius: "8px",
+                    border: "1px solid #ddd",
+                    fontSize: "14px",
+                    outline: "none",
+                    boxSizing: "border-box",
+                    backgroundColor: "#f9f9f9",
+                  }}
+                />
+              </div>
+            )}
+
+            <button
+              onClick={handleSubmit}
+              disabled={loading}
+              style={{
+                backgroundColor: "#111",
+                color: "white",
+                fontWeight: "bold",
+                padding: "12px",
+                borderRadius: "8px",
+                border: "none",
+                fontSize: "15px",
+                cursor: "pointer",
+                width: "100%",
+                marginTop: "4px",
+              }}
+            >
+              {loading ? "Loading..." : isLogin ? "Sign In" : "Daftar Sekarang"}
+            </button>
+
+            <p
+              style={{
+                textAlign: "center",
+                fontSize: "13px",
+                color: "#888",
+                marginTop: "4px",
+              }}
+            >
+              {isLogin ? "Belum punya akun? " : "Sudah punya akun? "}
+              <span
+                onClick={() => setMode(isLogin ? "daftar" : "masuk")}
+                style={{
+                  color: "#E8640C",
+                  fontWeight: "bold",
+                  cursor: "pointer",
+                }}
+              >
+                {isLogin ? "Daftar" : "Masuk"}
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div className="login-wayang-side">
           <img
             src={wayang2}
             alt="Wayang"
-            style={{ height: "90%" }}
+            style={{ height: "95%", objectFit: "contain" }}
           />
         </div>
       </div>

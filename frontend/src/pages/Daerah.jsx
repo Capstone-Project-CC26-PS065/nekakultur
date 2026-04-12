@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import API from "../api/api";
 import bali from "../assets/bali.png";
 import jkt from "../assets/jkt.png";
 import jatim from "../assets/jatim.png";
@@ -109,6 +110,8 @@ const provinsiSegera = [
 ];
 
 function Daerah({ sudahDibaca = [] }) {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [filterPulau, setFilterPulau] = useState("Semua");
 
@@ -127,6 +130,21 @@ function Daerah({ sudahDibaca = [] }) {
       (pulauMap[filterPulau] && pulauMap[filterPulau].includes(p.id));
     return matchSearch && matchPulau;
   });
+
+  useEffect(() => {
+    fetch(`${API}/learning?level=beginner`)
+      .then((res) => res.json())
+      .then((res) => {
+        setData(res);
+        setLoading(false);
+      })
+      .catch(() => {
+        alert("Gagal ambil data");
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) return <h2>Loading...</h2>;
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#FFF8F0" }}>
