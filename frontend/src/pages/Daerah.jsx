@@ -132,19 +132,29 @@ function Daerah({ sudahDibaca = [] }) {
   });
 
   useEffect(() => {
-    fetch(`${API}/learning?level=beginner`)
-      .then((res) => res.json())
+    const token = localStorage.getItem("token");
+
+    fetch(`${API}/learning/materials`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Unauthorized");
+        }
+        return res.json();
+      })
       .then((res) => {
         setData(res);
         setLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         alert("Gagal ambil data");
         setLoading(false);
       });
   }, []);
-
-  if (loading) return <h2>Loading...</h2>;
 
   return (
     <div style={{ minHeight: "100vh", backgroundColor: "#FFF8F0" }}>
