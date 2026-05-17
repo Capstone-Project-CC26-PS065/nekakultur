@@ -65,9 +65,11 @@ app.use((err, req, res, next) => {
 // ===============================
 // START SERVER
 // ===============================
+const { connectDB, sequelize } = require("./config/db");
 const start = async () => {
   try {
     await connectDB();
+    await sequelize.sync();
 
     console.log("✅ Database Connected");
 
