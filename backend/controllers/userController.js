@@ -1,5 +1,5 @@
 const User = require("../models/userModel");
-const bcrypt = require("bcrypt");
+const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 // ================= REGISTER =================
@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: "Email sudah terdaftar" });
     }
 
-    const hashed = await bcrypt.hash(password, 10);
+    const hashed = await bcryptjs.hash(password, 10);
 
     const user = await User.create({
       name,
@@ -24,7 +24,6 @@ exports.register = async (req, res) => {
       message: "Register berhasil",
       user,
     });
-
   } catch (err) {
     console.log("🔥 REGISTER ERROR:", err);
 
@@ -49,7 +48,7 @@ exports.login = async (req, res) => {
     }
 
     // 🔐 cek password
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await bcryptjs.compare(password, user.password);
 
     if (!isMatch) {
       return res.status(400).json({
@@ -63,11 +62,9 @@ exports.login = async (req, res) => {
     }
 
     // 🪪 generate token
-    const token = jwt.sign(
-      { id: user.id },
-      process.env.JWT_SECRET,
-      { expiresIn: "1d" }
-    );
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+      expiresIn: "1d",
+    });
 
     return res.json({
       message: "Login berhasil",
@@ -78,7 +75,6 @@ exports.login = async (req, res) => {
         email: user.email,
       },
     });
-
   } catch (err) {
     console.log("🔥 LOGIN ERROR:", err);
 
