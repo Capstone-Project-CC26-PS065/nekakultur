@@ -22,6 +22,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      "https://nekakultur.vercel.app",
       "https://nekakultur-7m08utm6i-dindaradestys-projects.vercel.app",
     ],
     credentials: true,
