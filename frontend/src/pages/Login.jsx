@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API from "../api/api";
 import wayang from "../assets/wayang.png";
 import wayang2 from "../assets/wayang2.png";
 import motif from "../assets/motif.png";
@@ -20,9 +21,6 @@ function Login({ onLogin }) {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  // 🔥 API BACKEND
-  const API = "http://localhost:5000/api";
-
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -42,7 +40,8 @@ function Login({ onLogin }) {
 
       setLoading(true);
 
-      const endpoint = mode === "masuk" ? "/users/login" : "/users/register";
+      const endpoint =
+        mode === "masuk" ? "/api/users/login" : "/api/users/register";
 
       // ✅ FIX PAYLOAD (PENTING)
       const payload =

@@ -1,7 +1,9 @@
+import API from "../api/api";
+
 const getQuiz = async () => {
   const token = localStorage.getItem("token");
 
-  const res = await fetch("http://localhost:5000/api/quiz?level=beginner", {
+  const res = await fetch(`${API}/api/quiz?level=beginner`, {
     headers: {
       Authorization: "Bearer " + token,
     },
@@ -14,7 +16,7 @@ const getQuiz = async () => {
 const updateProgress = async () => {
   const token = localStorage.getItem("token");
 
-  await fetch("http://localhost:5000/api/progress", {
+  await fetch(`${API}/api/progress`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
