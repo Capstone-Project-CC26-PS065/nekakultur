@@ -40,7 +40,8 @@ function Login({ onLogin }) {
 
       setLoading(true);
 
-      const endpoint = mode === "masuk" ? "/users/login" : "/users/register";
+      const endpoint =
+        mode === "masuk" ? "/api/users/login" : "/api/users/register";
 
       // ✅ FIX PAYLOAD (PENTING)
       const payload =
