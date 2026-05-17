@@ -20,9 +20,12 @@ const app = express();
 // CORS
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: [
+      "http://localhost:5173",
+      "https://nekakultur-7m08utm6i-dindaradestys-projects.vercel.app",
+    ],
     credentials: true,
-  })
+  }),
 );
 
 // 🔥 IMPORTANT: JSON BODY PARSER
@@ -81,7 +84,6 @@ const start = async () => {
     app.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);
     });
-
   } catch (err) {
     console.error("❌ Server Error:", err);
     process.exit(1);
