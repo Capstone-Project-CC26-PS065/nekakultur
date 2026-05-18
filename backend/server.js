@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 // DB
-const { connectDB, sequelize } = require("./config/db");
+const { connectDB } = require("./config/db");
 
 // ROUTES
 const userRoutes = require("./routes/userRoutes");
@@ -68,6 +68,7 @@ app.use((err, req, res, next) => {
 
 const start = async () => {
   try {
+    const { sequelize } = require("./config/db");
     await connectDB();
     await sequelize.sync();
 
