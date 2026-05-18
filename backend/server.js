@@ -18,13 +18,7 @@ const app = express();
 // ===============================
 
 // CORS
-app.use(
-  cors({
-    origin: "https://nekakultur.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-  }),
-);
+app.use(cors());
 
 // 🔥 IMPORTANT: JSON BODY PARSER
 app.use(express.json());
