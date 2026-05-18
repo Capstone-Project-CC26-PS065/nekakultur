@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function UploadKarya() {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     judul: "",
     deskripsi: "",
@@ -54,7 +55,7 @@ function UploadKarya() {
       });
 
       alert("Karya berhasil diunggah!");
-      window.location.href = "/profil";
+      navigate("/profil");
     };
 
     reader.readAsDataURL(form.gambar);

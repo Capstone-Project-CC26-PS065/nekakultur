@@ -21,7 +21,9 @@ function App() {
   // 🔐 LOGIN STATE
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const [sudahDibaca, setSudahDibaca] = useState([]);
+  const [sudahDibaca, setSudahDibaca] = useState(() => {
+    return JSON.parse(localStorage.getItem("sudahDibaca")) || [];
+  });
   const [sedangDipelajari, setSedangDipelajari] = useState([]);
   const [nilaiKuis, setNilaiKuis] = useState({});
 
@@ -40,7 +42,6 @@ function App() {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        
         {/* 🔐 LOGIN PAGE */}
         <Route
           path="/login"
@@ -90,15 +91,17 @@ function App() {
                       <PageTransition>
                         <DetailDaerah
                           sudahDibaca={sudahDibaca}
-                          onTandai={(id) =>
-                            setSudahDibaca([...sudahDibaca, id])
-                          }
+                          onTandai={(id) => {
+                            const updated = [...new Set([...sudahDibaca, id])];
+                            setSudahDibaca(updated);
+                            localStorage.setItem(
+                              "sudahDibaca",
+                              JSON.stringify(updated),
+                            );
+                          }}
                           onMulaiDipelajari={(id) => {
                             if (!sedangDipelajari.includes(id)) {
-                              setSedangDipelajari([
-                                ...sedangDipelajari,
-                                id,
-                              ]);
+                              setSedangDipelajari([...sedangDipelajari, id]);
                             }
                           }}
                         />
