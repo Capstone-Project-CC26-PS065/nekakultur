@@ -134,6 +134,8 @@ function Daerah({ sudahDibaca = [] }) {
   useEffect(() => {
     const token = localStorage.getItem("token");
 
+    console.log("TOKEN:", token);
+
     fetch(`${API}/api/learning/materials?level=beginner`, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -141,7 +143,7 @@ function Daerah({ sudahDibaca = [] }) {
     })
       .then((res) => {
         if (!res.ok) {
-          setError("Gagal ambil data");
+          throw new Error("Gagal ambil data");
         }
         return res.json();
       })
